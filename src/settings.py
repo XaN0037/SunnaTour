@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-(j33ra^_wa3%w&5u##yb()+u88lku4ze4urnhe3j&6qph3w_d)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['sunnatour.herokuapp.com/']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -132,7 +132,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/root')
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
