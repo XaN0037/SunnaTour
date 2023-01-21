@@ -72,6 +72,11 @@ class AuthView(GenericAPIView):
             return Response({
                 "Error": "Bunday method yoq"
             })
+
         return Response({
-            "success": f"{token.key}"
+            "result": {
+                "toker": token.key,
+                "mobile": user.mobile,
+                "name": user.ism,
+            }
         })
