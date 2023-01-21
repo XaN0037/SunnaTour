@@ -12,9 +12,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os.path
 from pathlib import Path
 
+import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -26,7 +27,6 @@ SECRET_KEY = 'django-insecure-(j33ra^_wa3%w&5u##yb()+u88lku4ze4urnhe3j&6qph3w_d)
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'src.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,7 +72,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'src.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -82,6 +81,22 @@ WSGI_APPLICATION = 'src.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.' + os.getenv('DB_ENGINE',"postgresql_psycopg2"),
+        'NAME': os.getenv('DB_NAME',"detq8bbsh316ah"),
+        'USER': os.getenv('DB_USER',"ztkscwvqdyvkcm"),
+        'PASSWORD': os.getenv('PASS',"dfd4b813f4f8a6914c2e9eac8dc15981755867caafd85a69bd476573444c9afe"),
+        'HOST': os.getenv('DB_HOST',"ec2-34-231-63-30.compute-1.amazonaws.com"),
+        'PORT': os.getenv('DB_HOST',"5432"),
+    }
+}
+
+db_from_env = dj_database_url.config(conn_max_age=600)
+
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
@@ -102,7 +117,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -114,21 +128,16 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR,'static/root')
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/root')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-MEDIA_ROOT = [os.path.join(BASE_DIR,'media')]
-
-
+MEDIA_ROOT = [os.path.join(BASE_DIR, 'media')]
 
 MEDIA_URL = "/media"
-
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
