@@ -4,12 +4,10 @@ from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from api.v1.tarif.serializer import TarifSerializer
-from base.fomats import _avto_formater
+
 from base.helper import BearerAuth
 
 from sayt.models import Tarif
-
-
 
 
 def format(data):
@@ -28,7 +26,9 @@ def format(data):
         ("price", data.price),
         ("img", data.img.url),
     ])
-class Newsview(GenericAPIView):
+
+
+class TarifViews(GenericAPIView):
     serializer_class = TarifSerializer
     permission_classes = (IsAuthenticated,)
     authentication_classes = (BearerAuth,)

@@ -1,6 +1,5 @@
 from django.contrib import admin
 
-from sayt.models import Tarif
 
 # Register your models here.
 
@@ -8,5 +7,3 @@ from sayt.models import Tarif
 
 
 
-
-admin.site.register(Tarif)
