@@ -38,7 +38,6 @@ class Tarif(models.Model):
 
 
 
-
 class News(models.Model):
     """ nomi -name """
     name = models.CharField(max_length=256)
@@ -53,7 +52,7 @@ class News(models.Model):
 
     '''rasmi-img'''
 
-    img = models.ImageField(blank=True)
+    img = models.ImageField(upload_to="news")
 
     def __str__(self):
         return self.name

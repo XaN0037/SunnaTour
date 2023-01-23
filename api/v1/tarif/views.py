@@ -3,6 +3,9 @@ from collections import OrderedDict
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.parsers import MultiPartParser
+
+
 from api.v1.tarif.serializer import TarifSerializer
 
 from base.helper import BearerAuth
@@ -32,6 +35,7 @@ class TarifViews(GenericAPIView):
     serializer_class = TarifSerializer
     permission_classes = (IsAuthenticated,)
     authentication_classes = (BearerAuth,)
+    parser_classes = (MultiPartParser,)
 
     def get(self, requests, pk=None, *args, **kwargs):
 
@@ -52,9 +56,12 @@ class TarifViews(GenericAPIView):
 
     def delete(self, requests, pk, *args, **kwargs):
         try:
+            print('1')
             root = Tarif.objects.get(pk=pk)
-            result = {"Succes": f"{root.name} o'chirildi"}
+            print(root)
+            result = {"Succes": f"{root.paket} o'chirildi"}
             root.delete()
+
             return Response(result)
         except:
             return Response({"ERROR": "Bunday id mavjud emas"})
@@ -62,6 +69,7 @@ class TarifViews(GenericAPIView):
     def post(self, requests, *args, **kwargs):
 
         data = requests.data
+        print(data)
         serializer = self.get_serializer(data=data)
         serializer.is_valid(raise_exception=True)
         root = serializer.create(serializer.data)
