@@ -75,7 +75,7 @@ class AuthView(GenericAPIView):
 
         return Response({
             "result": {
-                "toker": token.key,
+                "token": token.key,
                 "mobile": user.mobile,
                 "name": user.ism,
             }
