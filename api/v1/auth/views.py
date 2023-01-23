@@ -35,12 +35,12 @@ class AuthView(GenericAPIView):
 
             serializer = self.get_serializer(data=params)
             serializer.is_valid(raise_exception=True)
-            root = serializer.create(serializer.data)
-            root.set_password(params["password"])
-            root.save()
+            user = serializer.create(serializer.data)
+            user.set_password(params["password"])
+            user.save()
 
             token = Token()
-            token.user = root
+            token.user = user
             token.save()
 
         elif method == "login":
