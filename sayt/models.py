@@ -32,7 +32,7 @@ class Tarif(models.Model):
     room = models.IntegerField()
     price_type = models.CharField(max_length=10, choices=choises("price"))
     price = models.IntegerField()
-    img = models.ImageField(upload_to="tarif")
+    img = models.ImageField(upload_to="tarif", blank=True, null=True)
     def __str__(self):
         return self.type
 
@@ -52,7 +52,7 @@ class News(models.Model):
 
     '''rasmi-img'''
 
-    img = models.ImageField(upload_to="news")
+    img = models.ImageField(upload_to="news", blank=True, null=True)
 
     def __str__(self):
         return self.name

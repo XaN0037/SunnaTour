@@ -1,8 +1,15 @@
+import random
+
 from rest_framework.authtoken.models import Token
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from api.v1.auth.serializer import Userserializer
-from api.models import User
+from api.models import User, OTP
+import string
+import uuid
+
+from api.v1.auth.service import sms_sender
+from base.helper import code_decoder
 
 
 class AuthView(GenericAPIView):
@@ -68,6 +75,36 @@ class AuthView(GenericAPIView):
                 token = Token()
                 token.user = user
                 token.save()
+
+        elif method == "step.one":
+            nott = 'mobile' if "mobile" not in params else "lang" if "lang" not in params else None
+            if nott:
+                return Response({
+                    "Error": f"params.{nott} polyasi to'ldirilmagan"
+
+                })
+
+            code = random.randint(10000, 99999)
+            otp = code_decoder(code)
+            sms = sms_sender(params['mobile'], code, params['lang'])
+            if sms.get('status') != "waiting":
+                return Response({
+                    "error": "sms xizmatida qandaydir muommo",
+                    "data": sms
+                })
+
+            root = OTP()
+            root.mobile = params['mobile']
+            root.key = "pbkdf2_sha256$" + otp + "$" + uuid.uuid1().__str__()
+            root.save()
+
+            return Response({
+                "otp": code,
+                "token": root.key
+            }
+            )
+
+
         else:
             return Response({
                 "Error": "Bunday method yoq"

@@ -72,7 +72,7 @@ class TarifViews(GenericAPIView):
         print(data)
         serializer = self.get_serializer(data=data)
         serializer.is_valid(raise_exception=True)
-        root = serializer.create(serializer.data)
+        root = serializer.save()
 
         return Response(format(root))
 

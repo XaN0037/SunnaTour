@@ -50,10 +50,9 @@ class Newsview(GenericAPIView):
 
     def post(self, requests, *args, **kwargs):
 
-        data = requests.data
-        serializer = self.get_serializer(data=data)
+        serializer = self.get_serializer(data=requests.data)
         serializer.is_valid(raise_exception=True)
-        root = serializer.create(serializer.data)
+        root = serializer.save()
 
         return Response(format(root))
 

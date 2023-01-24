@@ -43,3 +43,35 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.mobile
+
+
+class ServerTokens(models.Model):
+    key = models.CharField(max_length=256)
+    token = models.CharField(max_length=2000)
+
+    def __str__(self):
+        return self.key
+
+
+class OTP(models.Model):
+    key = models.CharField(max_length=256)
+    mobile = models.CharField(max_length=25)
+    tries = models.IntegerField(default=0)
+    is_expired = models.BooleanField(default=False)
+    state = models.CharField(max_length=128, default="step_one")
+    created_at = models.DateTimeField(auto_now_add=True, auto_now=False, editable=False)
+    updated_at = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
