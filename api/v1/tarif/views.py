@@ -89,4 +89,3 @@ class TarifViews(GenericAPIView):
 
 
 
-Nodirbek
