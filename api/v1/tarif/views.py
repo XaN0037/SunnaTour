@@ -84,3 +84,9 @@ class TarifViews(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         root = serializer.save()
         return Response(format(root))
+
+
+
+
+
+asdasdasdd
