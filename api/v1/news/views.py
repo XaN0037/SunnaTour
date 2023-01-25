@@ -1,9 +1,12 @@
 from collections import OrderedDict
 
 from rest_framework.generics import GenericAPIView
+from rest_framework.parsers import MultiPartParser
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from api.v1.news.serializer import NewsSerializer
+from base.helper import BearerAuth
 from sayt.models import News
 
 
@@ -21,6 +24,9 @@ def format(data):
 
 class Newsview(GenericAPIView):
     serializer_class = NewsSerializer
+    # permission_classes = (IsAuthenticated,)
+    # authentication_classes = (BearerAuth,)
+    # parser_classes = (MultiPartParser,)
 
     def get(self, requests, pk=None, *args, **kwargs):
 

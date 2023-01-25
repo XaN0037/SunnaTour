@@ -5,7 +5,6 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.parsers import MultiPartParser
 
-
 from api.v1.tarif.serializer import TarifSerializer
 
 from base.helper import BearerAuth
@@ -56,9 +55,9 @@ class TarifViews(GenericAPIView):
 
     def delete(self, requests, pk, *args, **kwargs):
         try:
-            print('1')
+
             root = Tarif.objects.get(pk=pk)
-            print(root)
+
             result = {"Succes": f"{root.paket} o'chirildi"}
             root.delete()
 
@@ -68,9 +67,7 @@ class TarifViews(GenericAPIView):
 
     def post(self, requests, *args, **kwargs):
 
-        data = requests.data
-        print(data)
-        serializer = self.get_serializer(data=data)
+        serializer = self.get_serializer(data=requests.data)
         serializer.is_valid(raise_exception=True)
         root = serializer.save()
 
@@ -84,8 +81,3 @@ class TarifViews(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         root = serializer.save()
         return Response(format(root))
-
-
-
-
-
