@@ -11,10 +11,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os.path
 from pathlib import Path
-
+from corsheaders.conf import *
 import dj_database_url
-
-
+import pytz
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "rest_framework.authtoken",
+    "corsheaders",
     "api",
     "sayt"
 ]
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -56,6 +57,13 @@ MIDDLEWARE = [
 AUTH_USER_MODEL = "api.User"
 
 ROOT_URLCONF = 'src.urls'
+
+
+
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
 
 TEMPLATES = [
     {
@@ -85,7 +93,7 @@ WSGI_APPLICATION = 'src.wsgi.application'
 #     }
 # }
 
-#
+# #
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.' + os.getenv('DB_ENGINE',"postgresql_psycopg2"),
@@ -96,10 +104,10 @@ DATABASES = {
         'PORT': os.getenv('DB_HOST',"5432"),
     }
 }
-#
+
 db_from_env = dj_database_url.config(conn_max_age=600)
 #
-# DATABASES['default'].update(db_from_env)
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
@@ -125,7 +133,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# print(pytz.all_timezones)
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 

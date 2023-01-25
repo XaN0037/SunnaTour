@@ -1,3 +1,4 @@
+import datetime
 import random
 
 from rest_framework.authtoken.models import Token
@@ -31,6 +32,28 @@ class AuthView(GenericAPIView):
             })
 
         if method == "regis":
+            nott = "token" if "token" not in params else None
+            if nott:
+                return Response({
+                    "Error": f"params.{nott} polyasi to'ldirilmagan"
+
+                })
+
+            otp = OTP.objects.filter(key=params['token']).first()
+            if not otp:
+                return Response({
+                    "Error": f"Xato Token"
+                })
+
+            if otp.state != "confirmed":
+                return Response({
+                    "Error": "Otp Konfirmatsiyadan o'tmagan"
+                })
+
+            if otp.mobile != params.get('mobile'):
+                return Response({
+                    "Error": f"Kiritilgan raqam Otp qabul qilingan raqam bn mos emas"
+                })
 
             mobile = params.get("mobile")
             user = User.objects.filter(mobile=mobile).first()
@@ -95,7 +118,7 @@ class AuthView(GenericAPIView):
 
             root = OTP()
             root.mobile = params['mobile']
-            root.key = "pbkdf2_sha256$" + otp + "$" + uuid.uuid1().__str__()
+            root.key = uuid.uuid4().__str__() + "$" + otp + "$" + uuid.uuid1().__str__()
             root.save()
 
             return Response({
@@ -103,6 +126,62 @@ class AuthView(GenericAPIView):
                 "token": root.key
             }
             )
+
+        elif method == "step.two":
+            nott = 'otp' if "otp" not in params else "token" if "token" not in params else None
+            if nott:
+                return Response({
+                    "Error": f"params.{nott} polyasi to'ldirilmagan"
+
+                })
+
+            otp = OTP.objects.filter(key=params['token']).first()
+            if not otp:
+                return Response({
+                    "Error": f"Xato Token"
+                })
+            otp.state = "step_two"
+            otp.save()
+            now = datetime.datetime.now(datetime.timezone.utc)
+            cr = otp.created_at
+            if (now-cr).total_seconds() > 120:
+                otp.is_expired = True
+                otp.save()
+                return Response({
+                    "Error": f"Kod eskirgan"
+                })
+
+            if otp.is_expired:
+                return Response({
+                    "Error": f"Kod eskirgan"
+                })
+
+            key = otp.key.split("$")[1]
+            otp_key = code_decoder(key, decode=True)
+            if str(otp_key) != str(params['otp']):
+                otp.tries += 1
+                if otp.tries >= 3:
+                    otp.is_expired = True
+
+                otp.save()
+                return Response({
+                    "Error": "Xato OTP"
+                })
+
+            user = User.objects.filter(mobile=otp.mobile).first()
+            otp.state = "confirmed"
+            otp.save()
+            if user:
+                return Response({
+                    "is_registered": True
+                })
+            else:
+                return Response({
+                    "is_registered": False
+                })
+
+
+
 
 
         else:
