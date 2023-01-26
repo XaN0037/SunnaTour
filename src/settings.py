@@ -63,21 +63,21 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
 
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
-]
+# TEMPLATES = [
+#     {
+#         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+#         'DIRS': [os.path.join(BASE_DIR, 'templates')],
+#         'APP_DIRS': True,
+#         'OPTIONS': {
+#             'context_processors': [
+#                 'django.template.context_processors.debug',
+#                 'django.template.context_processors.request',
+#                 'django.contrib.auth.context_processors.auth',
+#                 'django.contrib.messages.context_processors.messages',
+#             ],
+#         },
+#     },
+# ]
 
 WSGI_APPLICATION = 'src.wsgi.application'
 
@@ -92,20 +92,20 @@ DATABASES = {
 }
 
 # #
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.' + os.getenv('DB_ENGINE', "postgresql_psycopg2"),
-#         'NAME': os.getenv('DB_NAME', "detq8bbsh316ah"),
-#         'USER': os.getenv('DB_USER', "ztkscwvqdyvkcm"),
-#         'PASSWORD': os.getenv('PASS', "dfd4b813f4f8a6914c2e9eac8dc15981755867caafd85a69bd476573444c9afe"),
-#         'HOST': os.getenv('DB_HOST', "ec2-34-231-63-30.compute-1.amazonaws.com"),
-#         'PORT': os.getenv('DB_HOST', "5432"),
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.' + os.getenv('DB_ENGINE', "postgresql_psycopg2"),
+        'NAME': os.getenv('DB_NAME', "detq8bbsh316ah"),
+        'USER': os.getenv('DB_USER', "ztkscwvqdyvkcm"),
+        'PASSWORD': os.getenv('PASS', "dfd4b813f4f8a6914c2e9eac8dc15981755867caafd85a69bd476573444c9afe"),
+        'HOST': os.getenv('DB_HOST', "ec2-34-231-63-30.compute-1.amazonaws.com"),
+        'PORT': os.getenv('DB_HOST', "5432"),
+    }
+}
 
 db_from_env = dj_database_url.config(conn_max_age=600)
 #
-# DATABASES['default'].update(db_from_env)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
