@@ -2,7 +2,7 @@ from collections import OrderedDict
 
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.parsers import MultiPartParser
 
 from api.v1.tarif.serializer import TarifSerializer
@@ -32,8 +32,8 @@ def format(data):
 
 class TarifViews(GenericAPIView):
     serializer_class = TarifSerializer
-    permission_classes = (IsAuthenticated,)
-    authentication_classes = (BearerAuth,)
+    permission_classes = (AllowAny,)
+    # authentication_classes = (BearerAuth,)
     parser_classes = (MultiPartParser,)
 
     def get(self, requests, pk=None, *args, **kwargs):
