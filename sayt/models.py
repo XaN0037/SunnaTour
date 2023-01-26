@@ -33,6 +33,8 @@ class Tarif(models.Model):
     price_type = models.CharField(max_length=10, choices=choises("price"))
     price = models.IntegerField()
     img = models.ImageField(upload_to="tarif", blank=True, null=True)
+    is_activa = models.BooleanField(default=True)
+
     def __str__(self):
         return self.type
 
