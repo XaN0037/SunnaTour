@@ -45,10 +45,10 @@ class PagesView(GenericAPIView):
             elif method == "hadis":
                 result = hadis(params['lan'])
 
-            elif method == "aviobilaet":
+            elif method == "aviobilet":
                 result = aviobilet(params['lan'])
 
-            elif method == "kopmaniya":
+            elif method == "kompaniya":
                 result = kompaniya(params['lan'])
 
             elif method == "malumot":

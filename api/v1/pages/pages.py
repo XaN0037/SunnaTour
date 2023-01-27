@@ -1,5 +1,5 @@
 from api.v1.tarif.views import format_tarif
-from base.slavar import TXT
+from base.slavar import TXT, BIGTXTNAME, BIGTXT, KOMPANY
 from sayt.models import Tarif, News
 from api.v1.news.views import format
 
@@ -41,6 +41,7 @@ def index(lang='uz'):
         "turkiya": TXT['TURKIYA'][lang],
         "sunnatour": TXT['SUNNATOURMAKS'][lang],
         "payme": TXT['PAYME'][lang],
+
 
     }
     cont2 = {
@@ -134,7 +135,6 @@ def umra(lan='uz'):
 
 
 def ziyotur(lan='uz'):
-
     cont1 = {
         "ziyotur": TXT['ZT'][lan],
     }
@@ -147,6 +147,23 @@ def ziyotur(lan='uz'):
 
 def hadis(lan='uz'):
     cont1 = {
+        "hadisname1": BIGTXTNAME['HADIS1'][lan],
+        "hadis1": BIGTXT['HADIS1'][lan],
+
+        "hadisname2": BIGTXTNAME['HADIS2'][lan],
+        "hadis2": BIGTXT['HADIS2'][lan],
+
+        "hadisname3": BIGTXTNAME['HADIS3'][lan],
+        "hadis3": BIGTXT['HADIS3'][lan],
+
+        "hadisname4": BIGTXTNAME['HADIS4'][lan],
+        "hadis4": BIGTXT['HADIS4'][lan],
+
+        "hadisname5": BIGTXTNAME['HADIS5'][lan],
+        "hadis5": BIGTXT['HADIS5'][lan],
+
+        "hadisname6": BIGTXTNAME['HADIS6'][lan],
+        "hadis6": BIGTXT['HADIS6'][lan],
 
     }
     return {
@@ -158,28 +175,63 @@ def hadis(lan='uz'):
 
 def aviobilet(lan='uz'):
     cont1 = {
+        "reys": TXT['REYSMEHMONXONA'][lan],
+        "avia": TXT['AVIACHIPTA'][lan],
+        "uchish": TXT['UCHISH'][lan],
+        "kelish": TXT['KELISH'][lan],
+        "sana": TXT['SANA'][lan],
+        "yulovchi": TXT['YULOVCHI'][lan],
+        "chipta": TXT['CHIPTATOP'][lan],
+        "mexmon": TXT['MEHMONXONA'][lan],
+
+
+    }
+
+    cont2 = {
         "arzon": TXT['ARZON'][lan],
         "ishonch": TXT['ISHONCHLI'][lan],
-        "ishonch": TXT['ISHONCHLI'][lan],
         "tezkor": TXT['TEZKOR'][lan],
+        "global": TXT['GLOBAL'][lan],
+        "tez": TXT['TEZ'][lan],
+        "ijtimoiy": TXT['IJTIMOIY'][lan],
+        "chegirma": TXT['CHEGIRMA'][lan],
+        "obuna": TXT['OBUNA'][lan],
+        "offerta": TXT['OFFERTA'][lan],
     }
     return {
         "header": header(lan),
         "cont1": cont1,
+        "cont2": cont2,
+
         "footer": footer(lan),
     }
 
 
 def kompaniya(lan='uz'):
     cont1 = {
+        "kom": TXT['KOMHAQIDA'][lan],
+        'adress': KOMPANY['MANZIL'][lan],
+        'farq': KOMPANY['FARQ'][lan],
+        'dastur': KOMPANY['DASTUR'][lan],
+        'shifo': KOMPANY['SHIFO'][lan],
+        'faoliyat': KOMPANY['FAOLIYAT'][lan],
+        'manzil2': KOMPANY['MANZIL2'][lan],
+        'til': KOMPANY['TIL'][lan],
+        'maruza': KOMPANY['MARUZA'][lan],
+        'halolmexmon': KOMPANY['HALOLMEXMON'][lan],
+        'tulov': KOMPANY['TULOV'][lan],
+        'sayt': KOMPANY['SAYT'][lan],
+        'narx': KOMPANY['NARX'][lan],
+        'osago': KOMPANY['OSAGO'][lan],
+        'tanlov': KOMPANY['TANLOV'][lan],
+        'oxirgi': KOMPANY['OXIRI'][lan],
 
     }
     return {
         "header": header(lan),
-
+        "cont1": cont1,
         "footer": footer(lan),
     }
-
 
 
 def malumot(lan='uz'):
