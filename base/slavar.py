@@ -60,8 +60,8 @@ TXT = {
     },
     "AVIACHIPTA": {
         "uz": "Avia chiptalar",
-        "ru": "Умра",
-        "en": "Umrah",
+        "ru": "",
+        "en": "",
 
     },
     "TURKIYA": {

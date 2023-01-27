@@ -8,7 +8,11 @@ def header(lan):
         "haj": TXT['HAJ'][lan],
         "umra": TXT['UMRA'][lan],
         "zt": TXT['ZT'][lan],
-        "hadis": TXT['HADIS'][lan]
+        "hadis": TXT['HADIS'][lan],
+        "aviabilet": TXT['AVIABILET'][lan],
+        "malumotlar": TXT['MALUMOTLAR'][lan],
+        "tulov": TXT['TULOV'][lan],
+
     }
 
 def footer(lan):
@@ -21,7 +25,13 @@ def haj_keys(lan):
 
 def index(lang='uz'):
     cont1 = {
-        "title": TXT['c1Title'][lang]
+        "title": TXT['c1Title'][lang],
+        "hajyil": TXT['HAJYIL'][lang],
+        "mehmonhona": TXT['MEXMONXONALAR'][lang],
+        "avia": TXT['AVIACHIPTA'][lang],
+        "turkiya": TXT['TURKIYA'][lang],
+        "sunnatour": TXT['SUNNATOURMAKS'][lang],
+        "payme": TXT['PAYME'][lang],
     }
 
     return {
