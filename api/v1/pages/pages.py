@@ -57,13 +57,22 @@ def index(lang='uz'):
         "yulovchi": TXT['YULOVCHI'][lang],
         "chipta": TXT['CHIPTATOP'][lang],
         "mexmon": TXT['MEHMONXONA'][lang],
+        "musulmon": TXT['MUSULMONMEHMONXONA'][lang],
+
 
 
 
     }
     cont4 = {
         "yangilik": TXT['YANGILIK'][lang],
-        "yangilik": TXT['YANGILIK'][lang],
+
+
+
+    }
+    fotter = {
+        "shart": TXT['SHARTNOMA'][lang],
+        "maxfiy": TXT['MAXFIYLIK'][lang],
+        "maxfiy": TXT['MAXFIYLIK'][lang],
 
 
     }
@@ -73,6 +82,8 @@ def index(lang='uz'):
         "cont1": cont1,
         "cont2": cont2,
         "cont3": cont3,
+        "cont4": cont4,
+        "fotter": fotter,
 
     }
 
