@@ -22,10 +22,61 @@ def format(data):
     ])
 
 
-class Newsview(ListCreateAPIView, UpdateAPIView, DestroyAPIView):
+
+
+
+
+
+
+class Newsview(GenericAPIView):
     serializer_class = NewsSerializer
-    permission_classes = (AllowAny,)
+    # permission_classes = (IsAuthenticated,)
     # authentication_classes = (BearerAuth,)
-    queryset = News
+    # parser_classes = (MultiPartParser,)
+
+    def get(self, requests, pk=None, *args, **kwargs):
+
+        if pk:
+            try:
+                result = format(News.objects.get(pk=pk))
+                return Response(result)
+            except:
+                result = {"ERROR": f"{pk} id bo'yicha hech qanday ma'lumot topilmadi"}
+                return Response(result)
+
+        else:
+            result = []
+            for i in News.objects.all():
+                result.append(format(i))
+
+        return Response(result)
+
+    def delete(self, requests, pk, *args, **kwargs):
+        try:
+            root = News.objects.get(pk=pk)
+            result = {"Succes": f"{root.name} o'chirildi"}
+            root.delete()
+            return Response(result)
+        except:
+            return Response({"ERROR": "Bunday id mavjud emas"})
+
+    def post(self, requests, *args, **kwargs):
+
+        data = requests.data
+        serializer = self.get_serializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        root = serializer.save()
+
+        return Response(format(root))
+
+    def put(self, requests, pk, *args, **kwargs):
+
+        data = requests.data
+        new = News.objects.get(pk=pk)
+        serializer = self.get_serializer(data=data, instance=new, partial=True)
+        serializer.is_valid(raise_exception=True)
+        root = serializer.save()
+        return Response(format(root))
+
 
 

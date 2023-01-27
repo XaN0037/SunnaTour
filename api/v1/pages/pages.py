@@ -32,11 +32,47 @@ def index(lang='uz'):
         "turkiya": TXT['TURKIYA'][lang],
         "sunnatour": TXT['SUNNATOURMAKS'][lang],
         "payme": TXT['PAYME'][lang],
+
+    }
+    cont2 = {
+        "jonliefir": TXT['MAKKA'][lang],
+        "haj2023": TXT['HAJ2023'][lang],
+        "dastur": TXT['DASTUR'][lang],
+        "haqida": TXT['HAJHAQIDA'][lang],
+        "shartnoma": TXT['SHARTNOMALAR'][lang],
+        "trening": TXT['TRENING'][lang],
+        "yul": TXT['YULDA'][lang],
+        "marosim": TXT['MAROSIM'][lang],
+        "uy": TXT['UY'][lang],
+
+
+    }
+    cont3 = {
+        "reys": TXT['REYSMEHMONXONA'][lang],
+        "avia": TXT['AVIACHIPTA'][lang],
+        "mexmonxona": TXT['MEXMONXONALAR'][lang],
+        "uchish": TXT['UCHISH'][lang],
+        "kelish": TXT['KELISH'][lang],
+        "sana": TXT['SANA'][lang],
+        "yulovchi": TXT['YULOVCHI'][lang],
+        "chipta": TXT['CHIPTATOP'][lang],
+        "mexmon": TXT['MEHMONXONA'][lang],
+
+
+
+    }
+    cont4 = {
+        "yangilik": TXT['YANGILIK'][lang],
+        "yangilik": TXT['YANGILIK'][lang],
+
+
     }
 
     return {
         "header": header(lang),
-        "cont1": cont1
+        "cont1": cont1,
+        "cont2": cont2,
+        "cont3": cont3,
 
     }
 
