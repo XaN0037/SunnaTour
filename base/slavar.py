@@ -23,7 +23,7 @@ TXT = {
 
     },
     "AVIABILET": {
-        "uz": "Авиабилеты",
+        "uz": "Aviobiletlar",
         "ru": "Авиабилеты",
         "en": "Airtickets",
 
@@ -420,4 +420,3 @@ TXT = {
 
     },
 }
-# a

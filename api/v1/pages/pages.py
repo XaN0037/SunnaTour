@@ -1,6 +1,7 @@
 from api.v1.tarif.views import format_tarif
 from base.slavar import TXT
-from sayt.models import Tarif
+from sayt.models import Tarif, News
+from api.v1.news.views import format
 
 
 def header(lan):
@@ -15,15 +16,23 @@ def header(lan):
 
     }
 
+
 def footer(lan):
-    pass
+    return {
+
+        "shart": TXT['SHARTNOMA'][lan],
+        "maxfiy": TXT['MAXFIYLIK'][lan],
+    }
+
 
 def haj_keys(lan):
     return {
 
     }
 
+
 def index(lang='uz'):
+    news = [format(x) for x in News.objects.all().order_by("-pk")[:10]]
     cont1 = {
         "title": TXT['c1Title'][lang],
         "hajyil": TXT['HAJYIL'][lang],
@@ -45,7 +54,6 @@ def index(lang='uz'):
         "marosim": TXT['MAROSIM'][lang],
         "uy": TXT['UY'][lang],
 
-
     }
     cont3 = {
         "reys": TXT['REYSMEHMONXONA'][lang],
@@ -59,21 +67,9 @@ def index(lang='uz'):
         "mexmon": TXT['MEHMONXONA'][lang],
         "musulmon": TXT['MUSULMONMEHMONXONA'][lang],
 
-
-
-
     }
     cont4 = {
         "yangilik": TXT['YANGILIK'][lang],
-
-
-
-    }
-    fotter = {
-        "shart": TXT['SHARTNOMA'][lang],
-        "maxfiy": TXT['MAXFIYLIK'][lang],
-        "maxfiy": TXT['MAXFIYLIK'][lang],
-
 
     }
 
@@ -83,20 +79,137 @@ def index(lang='uz'):
         "cont2": cont2,
         "cont3": cont3,
         "cont4": cont4,
-        "fotter": fotter,
+        "news": news,
+        "footer": footer(lang),
 
     }
 
 
-def haj(lan):
+def haj(lan='uz'):
     tarif = [format_tarif(x) for x in Tarif.objects.filter(is_activa=True, type="Haj").order_by("-pk")[:3]]
+    cont1 = {
+        "eko": TXT['EKONOMKLASS'][lan],
+        "o'rta": TXT['URTAKLASS'][lan],
+        "yuqori": TXT['YUQORIKLASS'][lan],
+        "hamjoy": TXT['HAMMAJOYLAR'][lan],
+        "qoljoy": TXT['QOLGANJOYLAR'][lan],
+        "davom": TXT['DAVOMIYLIGI'][lan],
+        "metr": TXT['MASOFA'][lan],
+        "xona": TXT['TURARJOY'][lan],
+        "narx": TXT['NARXI'][lan],
+        "buyurtma": TXT['BUYURTMA'][lan],
 
+    }
+    cont2 = {
+        "komp": TXT['KOMPHAQIDA'][lan],
+    }
+    cont3 = {
+        "haqimizda": TXT['BIZHAQIMIZDA'][lan],
 
+    }
     return {
         "header": header(lan),
         "tarif": {
             "caption": TXT['HAJYIL'][lan],
             "keys": haj_keys(lan),
             "data": tarif
-        }
+        },
+        "cont1": cont1,
+        "footer": footer(lan),
+    }
+
+
+def umra(lan='uz'):
+    tarif = [format_tarif(x) for x in Tarif.objects.filter(is_activa=True, type="Umra").order_by("-pk")[:3]]
+
+    return {
+        "header": header(lan),
+        "tarif": {
+            "caption": TXT['UMRA'][lan],
+            "keys": haj_keys(lan),
+            "data": tarif
+        },
+        "footer": footer(lan),
+    }
+
+
+def ziyotur(lan='uz'):
+
+    cont1 = {
+        "ziyotur": TXT['ZT'][lan],
+    }
+    return {
+        "header": header(lan),
+        "cont1": cont1,
+        "footer": footer(lan),
+    }
+
+
+def hadis(lan='uz'):
+    cont1 = {
+
+    }
+    return {
+        "header": header(lan),
+        "cont1": cont1,
+        "footer": footer(lan),
+    }
+
+
+def aviobilet(lan='uz'):
+    cont1 = {
+        "arzon": TXT['ARZON'][lan],
+        "ishonch": TXT['ISHONCHLI'][lan],
+        "ishonch": TXT['ISHONCHLI'][lan],
+        "tezkor": TXT['TEZKOR'][lan],
+    }
+    return {
+        "header": header(lan),
+        "cont1": cont1,
+        "footer": footer(lan),
+    }
+
+
+def kompaniya(lan='uz'):
+    cont1 = {
+
+    }
+    return {
+        "header": header(lan),
+
+        "footer": footer(lan),
+    }
+
+
+
+def malumot(lan='uz'):
+    cont1 = {
+
+    }
+    return {
+        "header": header(lan),
+        "cont1": cont1,
+        "footer": footer(lan),
+    }
+
+
+def tulov(lan='uz'):
+    cont1 = {
+
+    }
+    return {
+        "header": header(lan),
+        "cont1": cont1,
+        "footer": footer(lan),
+    }
+
+
+def login(lan='uz'):
+    cont1 = {
+
+    }
+    return {
+        "header": header(lan),
+        "cont1": cont1,
+        "footer": footer(lan),
     }

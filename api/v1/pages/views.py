@@ -1,6 +1,6 @@
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
-from api.v1.pages.pages import index, haj
+from api.v1.pages.pages import *
 from base.slavar import *
 
 from api.v1.auth.serializer import Userserializer
@@ -31,11 +31,35 @@ class PagesView(GenericAPIView):
                 "Error": "Bunaqa til yo'q"
             })
 
-        methods = ["index", 'haj']
+        methods = ["index", 'haj', "umra",'ziyotur','hadis','aviobilet','kompaniya','malumot','tulov','login']
 
         if method in methods:
             if method == "haj":
                 result = haj(params['lan'])
+            elif method == "umra":
+                result = umra(params['lan'])
+
+            elif method == "ziyotur":
+                result = ziyotur(params['lan'])
+
+            elif method == "hadis":
+                result = hadis(params['lan'])
+
+            elif method == "aviobilaet":
+                result = aviobilet(params['lan'])
+
+            elif method == "kopmaniya":
+                result = kompaniya(params['lan'])
+
+            elif method == "malumot":
+                result = malumot(params['lan'])
+
+            elif method == "tulov":
+                result = tulov(params['lan'])
+
+            elif method == "login":
+                result = login(params['lan'])
+
             else:
                 result = index(params['lan'])
 
