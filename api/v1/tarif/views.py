@@ -7,29 +7,11 @@ from rest_framework.parsers import MultiPartParser
 
 from api.v1.tarif.serializer import TarifSerializer, TarifBronSerializer
 from api.v1.tarif.service import format_bron
+from base.fomats import format_tarif
 
 from base.helper import BearerAuth
 
 from sayt.models import Tarif, TarifBron
-
-
-def format_tarif(data):
-    return OrderedDict([
-        ('id', data.id),
-        ('type', data.type),
-        ('paket', data.paket),
-        ("start_date", data.start_date),
-        ("end_date", data.end_date),
-        ("max_place", data.max_place),
-        ("duration", data.duration),
-        ("eating", data.eating),
-        ("distance", data.distance),
-        ("room", data.room),
-        ("price_type", data.price_type),
-        ("price", data.price),
-        ("img", data.img.url),
-    ])
-
 
 class TarifViews(GenericAPIView):
     serializer_class = TarifSerializer
@@ -86,7 +68,7 @@ class TarifViews(GenericAPIView):
 
 # qo'shilgan joyi'
 
-class TarifVibViews(GenericAPIView):
+class ActionViews(GenericAPIView):
     serializer_class = TarifBronSerializer
     permission_classes = (IsAuthenticated,)
     authentication_classes = (BearerAuth,)
@@ -115,14 +97,11 @@ class TarifVibViews(GenericAPIView):
                 return Response({
                     "Error": "Bunaqa tarif topilmadi"
                 })
-            data = {
-                "user": requests.user.mobile,
-                "tarif": t.id
-            }
 
-            serializer = self.get_serializer(data=data)
-            serializer.is_valid(raise_exception=True)
-            root = serializer.create()
+            root = TarifBron()
+            root.user = requests.user
+            root.tarif = t
+            root.save()
             return Response({'data': format_bron(root)})
         elif tipe == "change.pass":
             nott = "old" if "old" not in paket else "new" if "new" not in paket else None
