@@ -31,7 +31,7 @@ class PagesView(GenericAPIView):
                 "Error": "Bunaqa til yo'q"
             })
 
-        methods = ["index", 'haj', "umra",'ziyotur','hadis','aviobilet','kompaniya','malumot','tulov','login']
+        methods = ["index", 'haj', "umra", 'ziyotur', 'hadis', 'aviobilet', 'kompaniya', 'malumot', 'tulov', 'login']
 
         if method in methods:
             if method == "haj":

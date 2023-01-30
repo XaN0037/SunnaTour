@@ -2,6 +2,8 @@ from collections import OrderedDict
 
 from django.db import models
 
+from api.models import User
+
 
 # Create your models here.
 
@@ -39,7 +41,6 @@ class Tarif(models.Model):
         return self.type
 
 
-
 class News(models.Model):
     """ nomi -name """
     name = models.CharField(max_length=256)
@@ -58,3 +59,14 @@ class News(models.Model):
 
     def __str__(self):
         return self.name
+
+
+# qo'shilgan joyi
+class TarifBron(models.Model):
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True, db_constraint=False)
+    tarif = models.ForeignKey(Tarif, on_delete=models.DO_NOTHING, null=True, db_constraint=False)
+    status = models.IntegerField(choices=[
+        (0, "Bron qilingan"),
+        (1, "To'lov qilingan"),
+    ], default=0)
+    create_at = models.DateTimeField(auto_now_add=True)

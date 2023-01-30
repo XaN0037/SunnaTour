@@ -5,11 +5,12 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.parsers import MultiPartParser
 
-from api.v1.tarif.serializer import TarifSerializer
+from api.v1.tarif.serializer import TarifSerializer, TarifBronSerializer
+from api.v1.tarif.service import format_bron
 
 from base.helper import BearerAuth
 
-from sayt.models import Tarif
+from sayt.models import Tarif, TarifBron
 
 
 def format_tarif(data):
@@ -81,3 +82,88 @@ class TarifViews(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         root = serializer.save()
         return Response(format_tarif(root))
+
+
+# qo'shilgan joyi'
+
+class TarifVibViews(GenericAPIView):
+    serializer_class = TarifBronSerializer
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (BearerAuth,)
+
+    # parser_classes = (MultiPartParser,)
+
+    def post(self, requests, *args, **kwargs):
+
+        tipe = requests.data.get('method')
+        paket = requests.data.get('params')
+
+        if not tipe:
+            return Response({
+                "Error": "method kiritilmagan"
+            })
+
+        if paket is None or "tarif_id" not in paket:
+            return Response({
+                "Error": "params to'lliq emas"
+            })
+
+        if tipe == 'bron':
+
+            t = Tarif.objects.filter(pk=paket['tarif_id']).first()
+            if not t:
+                return Response({
+                    "Error": "Bunaqa tarif topilmadi"
+                })
+            data = {
+                "user": requests.user.mobile,
+                "tarif": t.id
+            }
+
+            serializer = self.get_serializer(data=data)
+            serializer.is_valid(raise_exception=True)
+            root = serializer.create()
+            return Response({'data': format_bron(root)})
+        elif tipe == "change.pass":
+            nott = "old" if "old" not in paket else "new" if "new" not in paket else None
+            if nott:
+                return Response({
+                    "Error": f"params.{nott} polyasi to'ldirilmagan"
+
+                })
+            if not requests.user.check_password(paket['old']):
+                return Response({
+                    "Error": "Parol xato"
+                })
+
+            requests.user.set_password(paket['new'])
+            requests.save()
+            return Response({
+                "Success": "Parol almashdi"
+            })
+
+        elif tipe == "del.bron":
+            nott = "id" if "id" not in paket else None
+            if nott:
+                return Response({
+                    "Error": f"params.{nott} polyasi to'ldirilmagan"
+
+                })
+            root = TarifBron.objects.filter(pk=paket['id']).first()
+            if not root:
+                return Response({
+                    "Error": "Bron qilingan tarif topilmadi"
+                })
+
+            root.delete()
+            return Response({
+                "Success": "Bron qilingan tarif o'chirib tashlandi"
+            })
+        elif tipe == "all.brons":
+            l = [format_bron(x) for x in TarifBron.objects.filter(user=requests.user)]
+            return Response({
+                "data": l
+            })
+
+        else:
+            return Response({'Error': 'Bunday method mavjut emas'})
