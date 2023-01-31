@@ -90,21 +90,21 @@ WSGI_APPLICATION = 'src.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
 #
-# # #
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.' + os.getenv('DB_ENGINE', "postgresql_psycopg2"),
-        'NAME': os.getenv('DB_NAME', "detq8bbsh316ah"),
-        'USER': os.getenv('DB_USER', "ztkscwvqdyvkcm"),
-        'PASSWORD': os.getenv('PASS', "dfd4b813f4f8a6914c2e9eac8dc15981755867caafd85a69bd476573444c9afe"),
-        'HOST': os.getenv('DB_HOST', "ec2-34-231-63-30.compute-1.amazonaws.com"),
+        'NAME': os.getenv('DB_NAME', "des36tevjusov7"),
+        'USER': os.getenv('DB_USER', "kukvdiyuiegaqp"),
+        'PASSWORD': os.getenv('PASS', "88ffc3f5f20148df03e8af8c8b02b916d94dd3c8899541463d646375aa68bc2d"),
+        'HOST': os.getenv('DB_HOST', "ec2-50-19-255-190.compute-1.amazonaws.com"),
         'PORT': os.getenv('DB_HOST', "5432"),
     }
 }
 
 db_from_env = dj_database_url.config(conn_max_age=600)
-#
+
 DATABASES['default'].update(db_from_env)
 
 # Password validation
