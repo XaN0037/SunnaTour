@@ -109,6 +109,9 @@ class AuthView(GenericAPIView):
 
             code = random.randint(10000, 99999)
             otp = code_decoder(code)
+            users = User.objects.filter(mobile=params["mobile"]).first()
+            if users:
+                return Response({'Error': "Bunday mobile allaqachon ro'yxatdan  o'tgan"})
             sms = sms_sender(params['mobile'], code, params['lang'])
             if sms.get('status') != "waiting":
                 return Response({

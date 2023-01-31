@@ -25,6 +25,9 @@ def choises(type):
 class Tarif(models.Model):
     type = models.CharField(max_length=128, choices=choises('tarif'))
     paket = models.CharField(max_length=128)
+    # paket_uz = models.CharField(max_length=128)
+    # paket_ru = models.CharField(max_length=128)
+    # paket_en = models.CharField(max_length=128)
     start_date = models.DateField()
     end_date = models.DateField()
     max_place = models.IntegerField()
