@@ -1,6 +1,6 @@
 import datetime
 import random
-
+from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
@@ -111,7 +111,11 @@ class AuthView(GenericAPIView):
             otp = code_decoder(code)
             users = User.objects.filter(mobile=params["mobile"]).first()
             if users:
-                return Response({'Error': "Bunday mobile allaqachon ro'yxatdan  o'tgan"})
+                return Response(
+                    {
+                        'Error': "Bunday mobile allaqachon ro'yxatdan  o'tgan"
+                    }, status=status.HTTP_400_BAD_REQUEST
+                )
             sms = sms_sender(params['mobile'], code, params['lang'])
             if sms.get('status') != "waiting":
                 return Response({
