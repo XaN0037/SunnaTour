@@ -74,7 +74,6 @@ class ActionViews(GenericAPIView):
     authentication_classes = (BearerAuth,)
 
     # parser_classes = (MultiPartParser,)
-
     def post(self, requests, *args, **kwargs):
 
         tipe = requests.data.get('method')
@@ -122,6 +121,7 @@ class ActionViews(GenericAPIView):
             })
 
         elif tipe == "del.bron":
+
             nott = "id" if "id" not in paket else None
             if nott:
                 return Response({
