@@ -85,13 +85,13 @@ class ActionViews(GenericAPIView):
                 "Error": "method kiritilmagan"
             })
 
-        if paket is None or 'tarif_id' not in paket:
-            return Response({
-                "Error": "params to'lliq emas"
-            })
 
         if tipe == 'bron':
 
+            if paket is None or 'tarif_id' not in paket:
+                return Response({
+                    "Error": "params to'lliq emas"
+                })
             t = Tarif.objects.filter(pk=paket['tarif_id']).first()
             if not t:
                 return Response({
