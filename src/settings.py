@@ -27,12 +27,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(j33ra^_wa3%w&5u##yb()+u88lku4ze4urnhe3j&6qph3w_d)'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*'] if DEBUG else os.getenv('ALLOWED_HOSTS')
 
 # Application definition
 
@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "api",
     "sayt",
 ]
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -90,24 +91,24 @@ WSGI_APPLICATION = 'src.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-#
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.' + os.getenv('DB_ENGINE', "postgresql_psycopg2"),
-        'NAME': os.getenv('DB_NAME', "des36tevjusov7"),
-        'USER': os.getenv('DB_USER', "kukvdiyuiegaqp"),
-        'PASSWORD': os.getenv('PASS', "88ffc3f5f20148df03e8af8c8b02b916d94dd3c8899541463d646375aa68bc2d"),
-        'HOST': os.getenv('DB_HOST', "ec2-50-19-255-190.compute-1.amazonaws.com"),
-        'PORT': os.getenv('DB_HOST', "5432"),
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.' + os.getenv('DB_ENGINE'),
+            'NAME': os.getenv('DB_NAME'),
+            'USER': os.getenv('DB_USER'),
+            'PASSWORD': os.getenv('PASS'),
+            'HOST': os.getenv('DB_HOST'),
+            'PORT': os.getenv('DB_PORT'),
+        }
+    }
 
 db_from_env = dj_database_url.config(conn_max_age=600)
 
@@ -130,6 +131,18 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        # "rest_framework.authentication.BasicAuthentication",
+    ],
+    # 'DEFAULT_PERMISSION_CLASSES': [
+        # 'rest_framework.permissions.IsAuthenticated',
+# ]
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -169,3 +182,29 @@ PAYME = {
     'PAYME_MIN_AMOUNT': int(os.getenv('PAYME_MIN_AMOUNT')),
     'PAYME_ACCOUNT': os.getenv('PAYME_ACCOUNT'),
 }
+
+# Cors
+if DEBUG:
+    CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS').split(',')
+    CSRF_TRUSTED_ORIGINS = os.getenv('CSRF_TRUSTED_ORIGINS').split(',')
+
+
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]

@@ -5,6 +5,7 @@ from rest_framework import status, permissions
 import requests, json
 from sayt.models import TarifBron
 from payme.methods.generate_link import GeneratePayLink
+from decimal import Decimal
 
 
 class Payme(APIView):
@@ -27,14 +28,14 @@ class Payme(APIView):
                 )
             cbu_uz_api = requests.get(url='https://cbu.uz/oz/arkhiv-kursov-valyut/json/')
             currency = json.loads(cbu_uz_api.content)[0]['Rate']
-            if bron.tarif.price_type == 'UZS':
-                amount = bron.tarif.price * 100
-            else:
-                amount = (bron.tarif.price * currency) * 100
-            order = Order.objects.create(amount=amount)
+            currency = float(currency)
+            amount = bron.tarif.price
+            if not bron.tarif.price_type == 'UZS':
+                amount = float(bron.tarif.price) * currency
+            order = Order.objects.create(amount=int(amount))
             pay_link = GeneratePayLink(
                 order_id=order.id,
-                amount=amount
+                amount=Decimal(amount)
             ).generate_link()
         except Exception as e:
             return Response(
