@@ -1,7 +1,7 @@
 from collections import OrderedDict
 
 from django.db import models
-
+from payme.models import Order, MerchatTransactionsModel
 from api.models import User
 
 
@@ -73,3 +73,10 @@ class TarifBron(models.Model):
         (1, "To'lov qilingan"),
     ], default=0)
     create_at = models.DateTimeField(auto_now_add=True)
+
+
+class PaymeOrder(models.Model):
+    bron = models.ForeignKey(TarifBron, on_delete=models.PROTECT)
+    order = models.ForeignKey(Order, on_delete=models.PROTECT)
+    transaction = models.ForeignKey(MerchatTransactionsModel, on_delete=models.PROTECT, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)

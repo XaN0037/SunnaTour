@@ -14,6 +14,11 @@ from pathlib import Path
 from corsheaders.conf import *
 import dj_database_url
 import pytz
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,8 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "rest_framework.authtoken",
     "corsheaders",
+    'payme',
     "api",
-    "sayt"
+    "sayt",
 ]
 
 MIDDLEWARE = [
@@ -154,3 +160,12 @@ MEDIA_URL = "/media/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+PAYME = {
+    'PAYME_ID': os.getenv('PAYME_ID'),
+    'PAYME_KEY': os.getenv('PAYME_KEY'),
+    'PAYME_URL': os.getenv('PAYME_URL'),
+    'PAYME_CALL_BACK_URL': os.getenv('PAYME_CALL_BACK_URL'),
+    'PAYME_MIN_AMOUNT': int(os.getenv('PAYME_MIN_AMOUNT')),
+    'PAYME_ACCOUNT': os.getenv('PAYME_ACCOUNT'),
+}
