@@ -150,7 +150,7 @@ class MerchantAPIView(APIView):
             raise PermissionDenied(error_message=error_message)
 
         password = password.split()[-1]
-
+        print(password, '4444444444444444444444444444444444444444444')
         try:
             password = base64.b64decode(password).decode('utf-8')
         except (binascii.Error, UnicodeDecodeError):
@@ -162,11 +162,12 @@ class MerchantAPIView(APIView):
             raise PermissionDenied(error_message=error_message)
 
         merchant_key = password.split(':')[-1]
-
+        print(merchant_key, '5555555555555555555555555555555555555555555')
         if merchant_key == settings.PAYME.get('PAYME_KEY'):
             is_payme = True
 
         if merchant_key != settings.PAYME.get('PAYME_KEY'):
+            print(settings.PAYME.get('PAYME_KEY'), '66666666666666666666666666666666666666666666666666')
             logged(
                 logged_message="Invalid key in request!",
                 logged_type="error"
