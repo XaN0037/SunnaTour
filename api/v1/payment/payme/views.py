@@ -3,9 +3,7 @@ from rest_framework import status
 from django.db import transaction
 import json
 import requests
-from api.v1.pages.texts import Texts
 from api.v1.payment.payme.responses import beautiful_response
-from bmain.models import MonthlyPlan, PaymentCourseTransaction
 
 import base64
 import binascii
@@ -27,83 +25,49 @@ from api.v1.payment.payme.methods.check_perform_transaction import CheckPerformT
 
 
 class Payme(APIView):
-    permission_classes = (permissions.IsAuthenticated,)
-
-    def _validate_data(self):
-        data = self.request.query_params
-        lang = data.get('lang')
-        monthly_payment = int(data.get('monthly_payment'))
-        errors = []
-        if not lang:
-            errors.append(beautiful_response(lang=True))
-        if not monthly_payment:
-            errors.append(beautiful_response(monthly_payment=True))
-        if lang and lang not in ['uz', 'ru', 'en']:
-            errors.append(beautiful_response(lang_not_found=True))
-        if monthly_payment:
-            monthly_payment = MonthlyPlan.objects.select_related('minutes').filter(id=monthly_payment).first()
-            if not monthly_payment:
-                errors.append(beautiful_response(monthly_payment_not_found=True))
-        return {
-            "success": False,
-            "message": "Error occurred",
-            "error": errors,
-            "data": []
-        }
-
-    def validate_order(self):
-        data = self.request.query_params
-        monthly_payment = int(data.get('monthly_payment'))
-        lang = data.get('lang')
-        cbu_uz_api = requests.get(url='https://cbu.uz/oz/arkhiv-kursov-valyut/json/')
-        with transaction.atomic():
-            amount = MonthlyPlan.objects.select_related('minutes').get(id=monthly_payment)
-            currency = json.loads(cbu_uz_api.content)[0]['Rate']
-            order_price = round((amount.monthly_price * float(currency) * 100) * float(amount.term_in_month), 2)
-            create_order = Order.objects.create(amount=order_price)
-            PaymentCourseTransaction.objects.create(
-                user_id=self.request.user.id, order_id=create_order.id, monthly_plan_id=monthly_payment,
-                dollar_currency=currency
-            )
-            return {
-                "order_id": create_order.id,
-                "amount": order_price,
-                "monthly_payment": {
-                    "month": f"{amount.term_in_month} {Texts['month'][lang]}",
-                    "minutes": f"{amount.minutes.term} {Texts['buy_course']['minutes_lang'][lang]}",
-                    "lesson": f"{amount.lesson} {Texts['lesson'][lang]}",
-                    "price": round(amount.monthly_price * float(amount.term_in_month), 2),
-                    "to_sum": round(order_price / 100, 2),
-                    "discount": amount.discount,
-                    "title": f'{Texts["buy_course"]["order_formalization"][lang]}',
-                    "back": f'{Texts["buy_course"]["back"][lang]}',
-                    "duration": f'{Texts["buy_course"]["duration"][lang]}',
-                    "plan": f'{Texts["buy_course"]["plan"][lang]}',
-                    "price_lang": f'{Texts["buy_course"]["price"][lang]}',
-                    "pay_button": f'{Texts["buy_course"]["pay_button"][lang]}',
-                }
-            }
+    permission_classes = (permissions.IsAuthenticated, )
 
     def post(self, request):
-        if self._validate_data().get('error'):
-            return Response(self._validate_data(), status=status.HTTP_400_BAD_REQUEST)
-        amount_and_order = self.validate_order()
-        pay_link = GeneratePayLink(
-            order_id=amount_and_order.get('order_id'),
-            amount=amount_and_order.get('amount')
-        ).generate_link()
+        try:
+            user = self.request.user
+            params = self.request.query_params
+            bron_id = params.get('bron_id')
+            try:
+                bron_id = int(bron_id)
+                bron = TarifBron.objects.filter(id=bron_id, user=user.id).first()
+            except Exception as e:
+                return Response(
+                    {
+                        'status': False,
+                        'error': 'Bron id not given or invalid id.'
+                    }
+                )
+            cbu_uz_api = requests.get(url='https://cbu.uz/oz/arkhiv-kursov-valyut/json/')
+            currency = json.loads(cbu_uz_api.content)[0]['Rate']
+            currency = float(currency)
+            amount = bron.tarif.price
+            if not bron.tarif.price_type == 'UZS':
+                amount = float(bron.tarif.price) * currency
+            order = Order.objects.create(amount=int(amount))
+            pay_link = GeneratePayLink(
+                order_id=order.id,
+                amount=Decimal(amount)
+            ).generate_link()
+        except Exception as e:
+            return Response(
+                {
+                    "status": False,
+                    "error": str(e)
+                }, status=status.HTTP_400_BAD_REQUEST
+            )
         return Response(
             {
-                "success": True,
-                "message": "Link created successfully",
-                "error": [],
+                "status": True,
                 "data": {
-                    'pay_link': pay_link,
-                    'monthly_payment': amount_and_order.get('monthly_payment')
+                    'link': pay_link
                 }
             }, status=status.HTTP_200_OK
         )
-
 
 class MerchantAPIView(APIView):
     permission_classes = ()
@@ -111,8 +75,10 @@ class MerchantAPIView(APIView):
 
     def post(self, request, *args, **kwargs):
         password = request.META.get('HTTP_AUTHORIZATION')
+        print(password)
         if self.authorize(password):
             incoming_data = request.data
+            print(incoming_data, "11111111111111111111111")
             incoming_method = incoming_data.get("method")
             logged_message = "Incoming {data}"
 
@@ -123,10 +89,12 @@ class MerchantAPIView(APIView):
                 ),
                 logged_type="info"
             )
+            print(logged, "22222222222222222222222222222222")
             try:
                 paycom_method = self.get_paycom_method_by_name(
                     incoming_method=incoming_method
                 )
+                print(paycom_method, "333333333333333333333333333333333333")
             except ValidationError:
                 raise MethodNotFound()
             except PerformTransactionDoesNotExist:

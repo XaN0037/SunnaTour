@@ -1,7 +1,7 @@
 from collections import OrderedDict
 
 from django.db import models
-from payme.models import Order, MerchatTransactionsModel
+from api.v1.payment.payme.models import Order, MerchatTransactionsModel
 from api.models import User
 
 
