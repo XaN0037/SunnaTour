@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "rest_framework.authtoken",
+    'rest_framework',
     "corsheaders",
     'payme',
     "api",
@@ -91,24 +92,24 @@ WSGI_APPLICATION = 'src.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+#if DEBUG:
+#    DATABASES = {
+#        'default': {
+#            'ENGINE': 'django.db.backends.sqlite3',
+#            'NAME': BASE_DIR / 'db.sqlite3',
+#        }
+#    }
+#else:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.' + os.getenv('DB_ENGINE'),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('PASS'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': int(os.getenv('DB_PORT')),
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.' + os.getenv('DB_ENGINE'),
-            'NAME': os.getenv('DB_NAME'),
-            'USER': os.getenv('DB_USER'),
-            'PASSWORD': os.getenv('PASS'),
-            'HOST': os.getenv('DB_HOST'),
-            'PORT': int(os.getenv('DB_PORT')),
-        }
-    }
+}
 
 db_from_env = dj_database_url.config(conn_max_age=600)
 
