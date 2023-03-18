@@ -22,6 +22,7 @@ from api.v1.payment.payme.methods.cancel_transaction import CancelTransaction
 from api.v1.payment.payme.methods.create_transaction import CreateTransaction
 from api.v1.payment.payme.methods.perform_transaction import PerformTransaction
 from api.v1.payment.payme.methods.check_perform_transaction import CheckPerformTransaction
+from sayt.models import TarifBron
 
 
 class Payme(APIView):
@@ -101,8 +102,18 @@ class MerchantAPIView(APIView):
                 raise PerformTransactionDoesNotExist()
 
             paycom_method = paycom_method(incoming_data.get("params"))
-
-        return Response(data=paycom_method)
+            headers = {
+                "Content-Type": "application/json; charset=UTF-8",
+                "Content-Length": 114,
+                "Test-Operation": "Paycom",
+                "Referer": "http://test.paycom.uz",
+                "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0",
+                "Authorization": "Basic UGF5Y29tOng/JXJSYmNla1VHenJBVkB6QkhZTlVDQGo0cHFaa0pDRDZKJQ=="
+            }
+        return Response(
+            data=paycom_method,
+            headers=headers
+        )
 
     @staticmethod
     def get_paycom_method_by_name(incoming_method: str) -> object:
@@ -162,7 +173,12 @@ class MerchantAPIView(APIView):
             raise PermissionDenied(error_message=error_message)
 
         merchant_key = password.split(':')[-1]
+<<<<<<< HEAD
         print(merchant_key, '5555555555555555555555555555555555555555555')
+=======
+        print(merchant_key)
+
+>>>>>>> f0aa6ad (Supplier answer)
         if merchant_key == settings.PAYME.get('PAYME_KEY'):
             is_payme = True
 

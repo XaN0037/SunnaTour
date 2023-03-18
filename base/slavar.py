@@ -2,7 +2,8 @@ TXT = {
     "HAJ": {
         "uz": "Haj",
         "ru": "Хадж",
-        "en": "Hajj"},
+        "en": "Hajj"
+    },
 
     "UMRA": {
         "uz": "Umra",
@@ -10,6 +11,11 @@ TXT = {
         "en": "Umrah",
 
     },
+    "BUYURTMALAR":{
+        "uz":"Buyurtlmalar",
+        "ru":"Заказы",
+        "en":"Orders"
+    }
     "ZT": {
         "uz": "Ziyorat turizmi",
         "ru": "Паломнический туризм",
@@ -31,11 +37,11 @@ TXT = {
     "KOMHAQIDA": {
         "uz": "Kompaniya haqida",
         "ru": "О компании",
-        "en": "Aboutthecompany",
+        "en": "About the company",
 
     },
     "MALUMOTLAR": {
-        "uz": "Foydalima’lumotlar",
+        "uz": "Foydali ma’lumotlar",
         "ru": "Полезная информация",
         "en": "Usefulinformation",
 
@@ -53,11 +59,12 @@ TXT = {
 
     },
     "MEXMONXONALAR": {
-        "uz": "Halolmexmonxonalar",
+        "uz": "Halol mexmonxonalar",
         "ru": "Халяльные отели",
         "en": "Halal hotels",
 
     },
+    
     "AVIACHIPTA": {
         "uz": "Avia chiptalar",
         "ru": "",
@@ -65,19 +72,19 @@ TXT = {
 
     },
     "TURKIYA": {
-        "uz": "Turkiyadadavolash",
+        "uz": "Turkiyada davolash",
         "ru": "Лечение в Турции",
-        "en": "TreatmentinTurkey",
+        "en": "Treatment in Turkey",
 
     },
     "MAKKA": {
-        "uz": "Makkadanjonliefir",
+        "uz": "Makkadan jonli efir",
         "ru": "Прямой эфир из Мекки",
-        "en": "LivefromMakkah",
+        "en": "Live from Makkah",
 
     },
     "SUNNATOUR": {
-        "uz": "Sunna tourbilanziyoratbosqichlari",
+        "uz": "Sunna tour bilan ziyorat bosqichlari",
         "ru": "Этапы паломничества с SunnaTour",
         "en": "Pilgrimage stages with Sunna Tour",
 
@@ -149,7 +156,7 @@ TXT = {
 
     },
     "MEHMONXONA": {
-        "uz": "Mehmonxonalarniko‘rsatish",
+        "uz": "Mehmonxonalarni ko‘rsatish",
         "ru": "Показать отели",
         "en": "Showhotels",
 
@@ -173,7 +180,7 @@ TXT = {
 
     },
     "ALLYANGILIK": {
-        "uz": "Barchayangiliklarnio‘qing",
+        "uz": "Barcha yangilik larni o‘qing",
         "ru": "Читать все новости",
         "en": "Readallnews",
 
@@ -186,37 +193,37 @@ TXT = {
     },
 
     "HAJHAQIDA": {
-        "uz": "Haj haqidako‘proqbiliboling",
+        "uz": "Haj haqida ko‘proq bilib oling",
         "ru": "Узнатьбольше о хадже",
         "en": "Learn more about Hajj",
 
     },
     "UMRAHAQIDA": {
-        "uz": "Umrahaqidako‘proqbiliboling",
-        "ru": "УзнатьбольшеобУмре",
+        "uz": "Umra haqida ko‘proq bilib oling",
+        "ru": "Узнать больше об Умре",
         "en": "Learn more about Umrah",
 
     },
     "SUNNATOURMAKS": {
-        "uz": "Sunna tour bilan birga farqni his eting :quyidagi dasturlarning arzonligi, maksimal kiritilgan xizmatlar, al-Haram yaqinatrofidagienyaxshisinflardagimehmonxonalar , ovqatlanishnonushtavakechkiovqat-hammauchunbufetdasturlar, radio qo'llanmabilanekskursiyalar-maxsusminigarnituralarziyoratchilar, bittasayohatda 4-5 martaUmraqilishvaboshqalar.",
+        "uz": "Sunna tour bilan birga farqni his eting :quyidagi dasturlarning arzonligi, maksimal kiritilgan xizmatlar, al-Haram yaqin atrofidagi eng yaxshi sifatlardagi mehmonxonalar , ovqatlanish nonushta va kechki ovqat-hamma uchun bufet dasturlar, radio qo'llanma bilan ekskursiyalar-maxsus minigarnituralar ziyorat chilar, bitta sayohatda 4-5 marta Umra qilish va boshqalar.",
         "ru": "Почувствуйте разницу вместе с Сунна туром: низкая стоимость следующих программ, максимально включенные услуги, отели высшего класса возле Аль-Харам, питание, завтраки и ужины-шведские программы для всех, туры с радиогидом-специальные наушники для паломников, в одном поездка Совершение умры 4-5 раз и т.д.",
         "en": "Feel the difference with Sunnah tour: low cost of the following programs, maximum included services, high-class hotels near Al Haram, meals, breakfasts and dinners - Swedish programs for everyone, radio guide tours - special headphones for pilgrims, in one trip Umrah 4 -5 times, etc.",
 
     },
     "PAYME": {
-        "uz": "Endi Visa, MasterCard, Mir bank kartalaribilanto'lashmumkin.",
+        "uz": "Endi Visa, MasterCard, Mir bank kartalari bilan to'lashmumkin.",
         "ru": "Теперь возможна оплата банковскими картами Visa, MasterCard, МИР.",
         "en": "Now it is possible to pay with Visa, MasterCard, MIR bank cards.",
 
     },
     "HAJ2023": {
-        "uz": "Haj 2023 – Makkagaziyoratqilish.muqaddasjoylarga-ma'lumbirvaqtdaqat'iyamalgaoshiriladiganIslomning yagona ustuni.",
+        "uz": "Haj 2023 – Makkaga ziyorat qilish.muqaddas joylarga-ma'lum bir vaqtda qat'iy amal ga oshiriladigan Islomning yagona ustuni.",
         "ru": "Хадж 2023 – паломничество в Мекку к священным местам – единственный столп ислама, который совершается строго в определенное время",
         "en": "Hajj 2023 - a pilgrimage to Mecca to sacred places - the only pillar of Islam, which is performed strictly at a certain time",
 
     },
     "UMRA2023": {
-        "uz": "Umra 2022/2023 — Makkaga, shuningdek, taqiqlanganmasjidgatashrifbuyurishbilanbog'liq haj, lekin Haj uchunmo'ljallanganoydaemas.",
+        "uz": "Umra 2022/2023 — Makkaga, shuningdek, taqiqlangan masjidga tashrif buyurish bilan bog'liq haj, lekin Haj uchun mo'ljallangan oyda emas.",
         "ru": "2022/2023— паломничество, связанное с посещением Мекки, а также Запретной ",
         "en": "Umrah 2022/2023 is a pilgrimage associated with visiting Mecca, as well as the Forbidden Mosque in particular, but not in the month intended for the Hajj.",
 
@@ -240,21 +247,21 @@ TXT = {
 
     },
     "DAVOMIYLIGI": {
-        "uz": "Davomiyligi: 14 kun",
-        "ru": "Длительность: 14 дней",
-        "en": "Duration: 14 days",
+        "uz": "Davomiyligi:",
+        "ru": "Длительность:",
+        "en": "Duration:",
 
     },
     "MASOFA": {
-        "uz": "Al-Harammasjidiga:900 metr",
-        "ru": "До Мечеть Аль-Харам: 900 метров  ",
-        "en": "To the Al-Haram Mosque: 900 meters",
+        "uz": "Al-Haram masjidiga:",
+        "ru": "До Мечеть Аль-Харам:",
+        "en": "To the Al-Haram Mosque:",
 
     },
     "TURARJOY": {
-        "uz": "Mehmonxonadaturarjoy:4 honali",
-        "ru": "Размещение в отеле:4 комнаты",
-        "en": "Hotel accommodation:4 rooms",
+        "uz": "Mehmonxona da turar joy:",
+        "ru": "Размещение в отеле:",
+        "en": "Hotel accommodation:",
 
     },
     "NARXI": {
@@ -265,43 +272,43 @@ TXT = {
     },
     "BUYURTMA": {
         "uz": "Buyurtma berish",
-        "ru": "Оформитьзаказ",
+        "ru": "Оформить заказ",
         "en": "Ordering",
 
     },
     "KOMPHAQIDA": {
-        "uz": "Sunna Tourkompaniyasihaqida",
-        "ru": "О компанииСуннаТур",
+        "uz": "Sunna Tour kompaniyasi haqida",
+        "ru": "О компании СуннаТур",
         "en": "About Sunna Tour Company",
 
     },
     "BIZHAQIMIZDA": {
-        "uz": "Bizhaqimizdamatbuot:",
+        "uz": "Biz haqimizda ma'lumot:",
         "ru": "О нас:",
         "en": "About us:",
 
     },
     "SHARTNOMA": {
-        "uz": "Foydalanuvchishartnomasi",
-        "ru": "ПользовательскоеСоглашение",
+        "uz": "Foydalanuvchi shartnomasi",
+        "ru": "Пользовательское Соглашение",
         "en": "User agreement",
 
     },
     "MAXFIYLIK": {
-        "uz": "Maxfiyliksiyosati",
-        "ru": "Политикаконфиденциальности",
+        "uz": "Maxfiylik siyosati",
+        "ru": "Политика конфиденциальности",
         "en": "Privacy Policy",
 
     },
     "HAMMAJOYLAR": {
-        "uz": "Hammajoylar:",
-        "ru": "всегомест",
+        "uz": "Hamma joylar:",
+        "ru": "всего мест",
         "en": "total seats",
 
     },
     "QOLGANJOYLAR": {
-        "uz": "qolganjoylar:",
-        "ru": "оставшиесяместа:",
+        "uz": "qolgan joylar:",
+        "ru": "оставшиеся места:",
         "en": "remaining places:",
 
     },
@@ -312,7 +319,7 @@ TXT = {
 
     },
     "POYEZD": {
-        "uz": "PoezdorqaliyokiAvtobusorqali 2 kunliksayohat Muzeylar vatarixiyjoylargakirishto'lovlari Ekskursiyabo'yichako'rsatmaxizmatlari",
+        "uz": "Poezd orqali yoki Avtobus orqali 2 kunlik sayohat Muzeylar va tarixiy joylarga kirish to'lovlari Ekskursiya bo'yicha ko'rsatma xizmatlari",
         "ru": " 2-дневная поездка на поезде или автобусе,Входные билеты в музеи и исторические места,Услугигида",
         "en": "2 day trip by train or bus,Entrance fees to museums and historical sites,Tour guide services",
 
@@ -324,25 +331,25 @@ TXT = {
     },
 
     "OVQAT": {
-        "uz": "Xonadonmehmonxonasi, nonushta, tushlik, kechkiovqat",
+        "uz": "Xonadon mehmonxonasi, nonushta, tushlik, kechkiovqat",
         "ru": "Апарт-отель, завтрак, обед, ужин",
         "en": "Apartment hotel, breakfast, lunch, dinner",
 
     },
     "ISHGATUSH": {
-        "uz": "1 Fevraldaishgatushamiz",
+        "uz": "1 Fevralda ishga tushamiz",
         "ru": "Мыначинаемс 1 февраля",
         "en": "We will start on February 1",
 
     },
     "PARVOZ": {
-        "uz": "Makkagaparvozlar",
+        "uz": "Makkaga parvozlar",
         "ru": "Авиабилеты в Мекку",
         "en": "Flights to Mecca",
 
     },
     "RAYS": {
-        "uz": "Reyslarvamehmonxonalar",
+        "uz": "Reyslar va mehmonxonalar",
         "ru": "Рейсы и гостиницы",
         "en": "Flights and hotels",
 
@@ -354,13 +361,13 @@ TXT = {
 
     },
     "MEXMONXONA": {
-        "uz": "Mehmonxonalarniko'rsatish",
-        "ru": "Показатьотели",
+        "uz": "Mehmonxonalarni ko'rsatish",
+        "ru": "Показать отели",
         "en": "Show hotels",
 
     },
     "ARZON": {
-        "uz": "Arzon.To'lovlarvaqo'shimchato'lovlaryo'q.",
+        "uz": "Arzon.To'lovlar va qo'shimcha to'lovlar yo'q.",
         "ru": "Дешевый.Нет никаких комиссий или дополнительных сборов.",
         "en": "Cheap.There are no fees or additional charges.",
 
@@ -372,8 +379,8 @@ TXT = {
 
     },
     "TEZKOR": {
-        "uz": "2006 yildanberiaviachiptalarnisotamiz. 16 yilbenuqsonvatezkor.",
-        "ru": "Мы занимаемся продажей авиабилетов с 2006 года. 16 летбезупречно и быстро",
+        "uz": "2006 yildan beri aviachiptalarni sotamiz. 16 yil benuqson va tezkor.",
+        "ru": "Мы занимаемся продажей авиабилетов с 2006 года. 16 лет без упречно и быстро",
         "en": "We have been selling air tickets since 2006. 16 years flawless and fast.",
 
     },
@@ -384,13 +391,13 @@ TXT = {
 
     },
     "GLOBAL": {
-        "uz": "Biz global bronqilishtizimibilanjihozlanganmiz.",
+        "uz": "Biz global bronqilish tizimi bilan jihozlanganmiz.",
         "ru": "У нас есть глобальная система бронирования.",
         "en": "We have a global booking system.",
 
     },
     "IJTIMOIY": {
-        "uz": "Ijtimoiytarmoqlardabahamko'ring",
+        "uz": "Ijtimoiy tarmoqlarda bahamko'ring",
         "ru": "Поделиться в социальныхсетях",
         "en": "Share on social networks",
 
@@ -402,7 +409,7 @@ TXT = {
 
     },
     "CHEGIRMA": {
-        "uz": "Chegirmalarhaqidabiliboling",
+        "uz": "Chegirmalar haqida bilib oling",
         "ru": "Узнать о скидках",
         "en": "Learn about discounts",
 
@@ -414,7 +421,7 @@ TXT = {
 
     },
     "OFFERTA": {
-        "uz": "Obunabo'lishorqali men shaxsiyma'lumotlarniqaytaishlashga rozilikberaman.",
+        "uz": "Obuna bo'lish orqali men shaxsiy ma'lumotlarni qaytaishlashga rozilikberaman.",
         "ru": "Подписываясь, я даю согласие на обработку персональных данных",
         "en": "By subscribing, I agree to the processing of personal data",
 
@@ -453,12 +460,12 @@ BIGTXTNAME = {
 
 BIGTXT = {
     "HADIS1": {
-        "uz": "Safargasheriktanlashsafarqilishningmuhimjihatlaridanbo'lib, safardoshtaqvodor, yaxshifikrli, toatvaibodatdako'makchibo'lishilozim. Rasulullohsollallohualayhivasallamehtiyotyuzasidantundayolg'izsafarqilishdanqaytarganlar.IbnUmarroziyallohuanhudanrivoyatqilinadi:“Rasulullohsollallohualayhivasallam:“Agarodamlaryolg'izlikdagimenbilgannarsanibilganlarida, birorkishikechasiyolg'izyo'lyurmaganbo'laredi”, dedilar”.Buxoriyrivoyatqilganlar.",
+        "uz": "Safarga sherik tanlash safar qilishning muhim jihatlaridan bo'lib, safardosh taqvodor, yaxshi fikrli, toat va ibodatda ko'makchi bo'lishilozim. Rasululloh Sollallohu Alayhi Vasallam ehtiyot yuzasidan tundayolg'iz safar qilishdan qaytarganlar.IbnUmar roziyallohu anhudan rivoyat qilinadi:“Rasululloh sollallohu alayhi vasallam:“Agar odamlar yolg'izlikdagi men bilgan narsani bilganlarida, birorkishi kechasi yolg'iz yo'lyurmagan bo'lar edi”, dedilar”.Buxoriy rivoyatqilganlar.",
         "ru": "Выбор попутчика — один из важнейших аспектов путешествия, а попутчик должен быть благочестивым, благоразумным, послушным и полезным в молитве. Посланник Аллаха, да благословит его Аллах и приветствует, запретил путешествовать одному ночью. Они сказали: «Передал Бухари.",
         "en": "Choosing a travel partner is one of the most important aspects of travel, and the travel partner should be pious, well-minded, obedient and helpful in prayer. The Messenger of Allah, may God bless him and grant him peace, forbade traveling alone at night. They said, Bukhari narrated.",
     },
     "HADIS2": {
-        "uz": "Hadisisharifdasafardasheriklaro'zoralaridantajribali, omonatdor, fahm-farosatlikishiniboshliqqilibsaylab, ungaitoatetishgabuyurilganlar.AbuSa`iydal-Xudriyroziyallohuanhudanrivoyatqilinadi:“Rasulullohsollallohualayhivasallam:“Safarqiluvchilaruchtabo'lsalar, albattabirlariniboshliqqilibolsinlar”, dedilar».",
+        "uz": "Hadisi sharifda safar da sheriklar o'z oralaridan tajribali, omonatdor, fahm-farosatli kishini boshliq qilib saylab, unga itoat etishga buyurilganlar.Abu Sa`iyd Al-Xudriy roziyallohu anhudan rivoyat qilinadi:“Rasululloh sollallohu alayhi vasallam:“Safar qiluvchilar uchta bo'lsalar, albatta birlarini boshliq qilib olsinlar”, dedilar».",
         "ru": "В хадис-шарифе спутникам в путешествии предписывалось выбрать себе вождем опытного, заслуживающего доверия и понимающего человека и подчиняться ему, пусть обязательно сделают кого-нибудь из них своим вождем».",
         "en": "In the hadith sharif, the companions on the journey were ordered to choose an experienced, trustworthy, and understanding person as their leader and obey him. , let them definitely make one of them their leader."
     },
@@ -490,44 +497,44 @@ BIGTXT = {
 
 KOMPANY = {
     "MANZIL": {
-        "uz": "ФирмаманзилиТошкентшЯшнободтуманиТузелҚишлоқфуқароларйиғиниЧинормахаллафуқароларйиғиниМураббийларкўчаси 92 уйКонтакттел +998 91 162 86 76",
+        "uz": "Фирма манзили Тошкентш Яшнобод тумани Тузел Қишлоқ фуқаролар йиғини Чинор махалла фуқаролар йиғини Мураббийлар кўчаси 92 уй Контак ттел +998 91 162 86 76",
         "ru": "Адрес предприятия, г.Ташкент, Яшнабадский р-н, с.Тузель Народное Собрание ЧинорМахалля Гражданское Собрание ул.Мураббилар 92 Контактный телефон +998 91 162 86 76",
         "en": "Address of the company, Tashkent city, Yashnabad district, Tuzel Village Citizens' Assembly Chinor Mahalla Citizens' Assembly 92 Murabbylar Street Contact phone +998 91 162 86 76",
 
     },
     "FARQ": {
-        "uz": "Bizniboshqakompaniyalardannimasibilanfarqqiladi? Ummasayohati:",
+        "uz": "Bizni boshqa kompaniyalardan nimasi bilan farqqiladi? Ummra sayohati:",
         "ru": "Чем мы отличаемся от других компаний? Публичный проезд:",
         "en": "What makes us different from other companies? Public Travel:",
 
     },
 "DASTUR": {
-        "uz": "•    Har qandaybyudjetuchundasturlar: All Inclusive, Comfort, Premium, Suite;",
+        "uz": "• Har qanday byudjet uchun dasturlar:Komfort",
         "ru": "• Программы на любой бюджет: Все включено, Комфорт, Премиум, Люкс;",
         "en": "• Programs for any budget: All Inclusive, Comfort, Premium, Suite;",
 
     },
 "SHIFO": {
-        "uz": "•	Сунна-шифо” ОКманзили: ТошкентвилоятиҚибрайтумани, ТузельҚФЙ, Мураббийларкўчаси, 92 уй.",
+        "uz": "• Сунна-шифо” ОКманзили: Тошкент вилояти Қибрайтумани, ТузельҚФЙ, Мураббийларкўчаси, 92 уй.",
         "ru": "• Адрес ОЦ «Сунна-шифо»: Тузел КФЙ, Кибрайский район, Ташкентская область, улица Мураббайлар, 92. ;",
         "en": '• Sunna-shifo" OC address: Tuzel QFY, Kibrai district, Tashkent region, 92, Murabbiylar street. ;',
 
     },
 "FAOLIYAT": {
-        "uz": "•	Фаолияттуриҳақидамаълумот: - “Сунна-шифо” Оилавийкорхонасиички, киришвачиқиштуристикфаолиятини “Сунна-тур” брендиоситдаолибборади.",
+        "uz": "•Фаолият тури ҳақида маълумот: - “Сунна-шифо” Оилавий корхонаси ички, кириш ва чиқиш туристик фаолиятини “Сунна-тур” бренди оситда олиб боради.",
         "ru": "Информация о виде деятельности: - Семейное предприятие «Сунна-шифо» осуществляет внутреннюю, въездную и выездную туристическую деятельность под торговой маркой «Сунна-тур».",
         "en": "",
 
     },
 "MANZIL2": {
-        "uz": "• Сунна-шифо” ОКманзили: ТошкентвилоятиҚибрайтумани, ТузельҚФЙ, Мураббийларкўчаси, 92 уй.",
+        "uz": "• Сунна-шифо” ОКманзили: Тошкент вилояти Қибрай тумани, ТузельҚФЙ, Мураббийларкўчаси, 92 уй.",
         "ru": "• Адрес ОЦ «Сунна-шифо»: Тузел КФЯ, Кибрайский район, Ташкентская область, ул. Мураббиляр, 92.",
         "en": '• Sunna-shifo" OC address: Tuzel QFY, Kibrai district, Tashkent region, 92, Murabbiylar street. ',
 
     },
 
 "TIL": {
-        "uz": "•	Икки чет тилидаги (рус, инглиз), электрон тўловлар, бронқилишхизматларибўлишикерак.",
+        "uz": "•Икки чет тилидаги (рус, инглиз), электрон тўловлар, брон қилиш хизматлари бўлиши керак.",
         "ru": "• Должно быть два иностранных языка (русский, английский), электронные платежи, услуги бронирования.",
         "en": "• There should be two foreign languages (Russian, English), electronic payments, reservation services.",
 
@@ -539,13 +546,13 @@ KOMPANY = {
 
     },
 "TULOV": {
-        "uz": "•	To'lovusullari: kompaniyaofisidanaqdpul, bank o'tkazmasi, saytdagi bank kartasi;",
+        "uz": "• To'lov usullari: kompaniya ofisida naqd pul, bank o'tkazmasi, saytdagi bank kartasi;",
         "ru": "• Способы оплаты: наличные в офисе компании, безналичный расчет, банковская карта на месте;",
         "en": "• Payment methods: cash at the company office, bank transfer, bank card on site;",
 
     },
 "HALOLMEXMON": {
-        "uz": "Halolmehmonxonalarnibronqilishuchunmaxsus sunat.uz platformamizdamehmonxonahaqidagima’lumotlarbilantanishishingiz, sanalarnitanlashingizvanarxlarnio‘zingizbilibolishingiz, istalganmehmonxonanibronqilishvakreditkartaorqalito‘lashingizmumkin. Onlaynbronqilishtizimimizdaro'yxatdano'tganagentliklaruchunkomissiyalarqo'llaniladi.",
+        "uz": "Halol mehmonxonalarni bron qilish uchun maxsus sunat.uz platformamizda mehmonxona haqidagi ma’lumotlar bilan tanishishingiz, sanalarni tanlashingiz va narxlarni o‘zingiz bilib olishingiz, istalgan mehmonxonani bron qilish va kredit karta orqali to‘lashingiz mumkin. Onlayn bronqilish tizimimizda ro'yxatdan o'tgan agentliklar uchun komissiyalar qo'llaniladi.",
         "ru": "На нашей специальной платформе для бронирования халяль-отелей sunat.uz вы можете ознакомиться с информацией об отелях, выбрать даты и узнать цены самостоятельно, забронировать любой отель и оплатить банковской картой. Комиссии применяются к агентствам, зарегистрированным в нашей системе онлайн-бронирования.",
         "en": "On our special sunat.uz platform for booking halal hotels, you can get acquainted with hotel information, choose dates and find out prices yourself, book any hotel and pay by credit card. Commissions apply to agencies registered in our online booking system.",
 
@@ -558,28 +565,28 @@ KOMPANY = {
     },
 
 "NARX": {
-        "uz": "Engyaxshinarxlardakomissiyasizvaqo'shimchato'lovlarsizdunyoningistalgannuqtasigaaviachiptalarnisotiboling. Biz yuzlabsaytlardaginarxlarnisolishtiramizvasizgaengarzonparvozvariantinitanlashimkoniniberamiz.",
+        "uz": "Eng yaxshi narxlarda komissiyasiz va qo'shimcha to'lovlar siz dunyoning istalgan nuqtasiga aviachiptalarni sotib oling. Biz yuzlab saytlardagi narxlarni solishtiramiz va sizga eng arzon parvoz va riantini tanlash imkonini beramiz.",
         "ru": "Покупайте авиабилеты в любую точку мира по лучшим ценам без комиссий и дополнительных сборов. Мы сравниваем цены на сотнях сайтов и предоставляем вам возможность выбрать самый дешевый вариант перелета.",
         "en": "Buy air tickets anywhere in the world at the best prices without commission or additional fees. We compare prices on hundreds of sites and let you choose the cheapest flight option.",
 
     },
 
 "OSAGO": {
-        "uz": "OSAGO elektronpolisiniofisgabormasdan, qo'shimchakomissiyalarsizvaatigi 7 daqiqadaengyirikvaishonchlisug'urtakompaniyalaridanonlayntarzdachiqaring.",
+        "uz": "OSAGO elektron polisini ofisga bormasdan, qo'shimcha komissiyalar siz va atigi 7 daqiqada eng yirik va ishonchli sug'urta kompaniyalaridan onlayn tarzda chiqaring.",
         "ru": "Оформите электронный полис ОСАГО онлайн без выезда в офис, без дополнительных комиссий и всего за 7 минут от крупнейших и надежных страховых компаний.",
         "en": "Issue an OSAGO electronic policy online without going to the office, without additional commissions and in just 7 minutes from the largest and most reliable insurance companies.",
 
     },
 
 "TANLOV": {
-        "uz": "Umidqilamizki, biz sizgato'g'ritanlovqilishgayordamberamiz.:",
+        "uz": "Umid qilamizki, biz sizga to'g'ri tanlov qilishga yordam beramiz.:",
         "ru": "Надеемся, что мы поможем вам сделать правильный выбор.С уважением, Сунна Тур.",
         "en": "We hope that we will help you make the right choice.",
 
     },
 
 "OXIRI": {
-        "uz": "Hurmatbilan, Sunna Tour.",
+        "uz": "Hurmat bilan, Sunna Tour.",
         "ru": "С уважением, Сунна Тур.",
         "en": "Sincerely, SunnaTour.",
 
