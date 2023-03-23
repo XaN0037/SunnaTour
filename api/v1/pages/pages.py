@@ -13,13 +13,13 @@ def header(lan):
         "aviabilet": TXT['AVIABILET'][lan],
         "malumotlar": TXT['MALUMOTLAR'][lan],
         "tulov": TXT['TULOV'][lan],
-
+        "buyurtma": TXT['BUYURTMALAR'][lan],
+        "komphadida": TXT["KOMHAQIDA"][lan],
     }
 
 
 def footer(lan):
     return {
-
         "shart": TXT['SHARTNOMA'][lan],
         "maxfiy": TXT['MAXFIYLIK'][lan],
     }
@@ -41,8 +41,6 @@ def index(lang='uz'):
         "turkiya": TXT['TURKIYA'][lang],
         "sunnatour": TXT['SUNNATOURMAKS'][lang],
         "payme": TXT['PAYME'][lang],
-
-
     }
     cont2 = {
         "jonliefir": TXT['MAKKA'][lang],

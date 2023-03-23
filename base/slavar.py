@@ -11,10 +11,10 @@ TXT = {
         "en": "Umrah",
 
     },
-    "BUYURTMALAR":{
-        "uz":"Buyurtlmalar",
-        "ru":"Заказы",
-        "en":"Orders"
+    "BUYURTMALAR": {
+        "uz": "Buyurtlmalar",
+        "ru": "Заказы",
+        "en": "Orders"
     },
     "ZT": {
         "uz": "Ziyorat turizmi",
@@ -64,11 +64,11 @@ TXT = {
         "en": "Halal hotels",
 
     },
-    
+
     "AVIACHIPTA": {
         "uz": "Avia chiptalar",
-        "ru": "",
-        "en": "",
+        "ru": "Авиабилети",
+        "en": "Tickets",
 
     },
     "TURKIYA": {
@@ -494,7 +494,6 @@ BIGTXT = {
 
 }
 
-
 KOMPANY = {
     "MANZIL": {
         "uz": "Фирма манзили Тошкентш Яшнобод тумани Тузел Қишлоқ фуқаролар йиғини Чинор махалла фуқаролар йиғини Мураббийлар кўчаси 92 уй Контак ттел +998 91 162 86 76",
@@ -508,89 +507,88 @@ KOMPANY = {
         "en": "What makes us different from other companies? Public Travel:",
 
     },
-"DASTUR": {
+    "DASTUR": {
         "uz": "• Har qanday byudjet uchun dasturlar:Komfort",
         "ru": "• Программы на любой бюджет: Все включено, Комфорт, Премиум, Люкс;",
         "en": "• Programs for any budget: All Inclusive, Comfort, Premium, Suite;",
 
     },
-"SHIFO": {
+    "SHIFO": {
         "uz": "• Сунна-шифо” ОКманзили: Тошкент вилояти Қибрайтумани, ТузельҚФЙ, Мураббийларкўчаси, 92 уй.",
         "ru": "• Адрес ОЦ «Сунна-шифо»: Тузел КФЙ, Кибрайский район, Ташкентская область, улица Мураббайлар, 92. ;",
         "en": '• Sunna-shifo" OC address: Tuzel QFY, Kibrai district, Tashkent region, 92, Murabbiylar street. ;',
 
     },
-"FAOLIYAT": {
+    "FAOLIYAT": {
         "uz": "•Фаолият тури ҳақида маълумот: - “Сунна-шифо” Оилавий корхонаси ички, кириш ва чиқиш туристик фаолиятини “Сунна-тур” бренди оситда олиб боради.",
         "ru": "Информация о виде деятельности: - Семейное предприятие «Сунна-шифо» осуществляет внутреннюю, въездную и выездную туристическую деятельность под торговой маркой «Сунна-тур».",
         "en": "",
 
     },
-"MANZIL2": {
+    "MANZIL2": {
         "uz": "• Сунна-шифо” ОКманзили: Тошкент вилояти Қибрай тумани, ТузельҚФЙ, Мураббийларкўчаси, 92 уй.",
         "ru": "• Адрес ОЦ «Сунна-шифо»: Тузел КФЯ, Кибрайский район, Ташкентская область, ул. Мураббиляр, 92.",
         "en": '• Sunna-shifo" OC address: Tuzel QFY, Kibrai district, Tashkent region, 92, Murabbiylar street. ',
 
     },
 
-"TIL": {
+    "TIL": {
         "uz": "•Икки чет тилидаги (рус, инглиз), электрон тўловлар, брон қилиш хизматлари бўлиши керак.",
         "ru": "• Должно быть два иностранных языка (русский, английский), электронные платежи, услуги бронирования.",
         "en": "• There should be two foreign languages (Russian, English), electronic payments, reservation services.",
 
     },
-"MARUZA": {
+    "MARUZA": {
         "uz": "• Kunlikva boy dastur: ekskursiyalar, ma'ruzalar, qo'shimchaguruhtavoflari;",
         "ru": "• Ежедневная и насыщенная программа: экскурсии, лекции, дополнительные групповые обходы;",
         "en": "• Daily and rich program: excursions, lectures, additional group circumambulation;",
 
     },
-"TULOV": {
+    "TULOV": {
         "uz": "• To'lov usullari: kompaniya ofisida naqd pul, bank o'tkazmasi, saytdagi bank kartasi;",
         "ru": "• Способы оплаты: наличные в офисе компании, безналичный расчет, банковская карта на месте;",
         "en": "• Payment methods: cash at the company office, bank transfer, bank card on site;",
 
     },
-"HALOLMEXMON": {
+    "HALOLMEXMON": {
         "uz": "Halol mehmonxonalarni bron qilish uchun maxsus sunat.uz platformamizda mehmonxona haqidagi ma’lumotlar bilan tanishishingiz, sanalarni tanlashingiz va narxlarni o‘zingiz bilib olishingiz, istalgan mehmonxonani bron qilish va kredit karta orqali to‘lashingiz mumkin. Onlayn bronqilish tizimimizda ro'yxatdan o'tgan agentliklar uchun komissiyalar qo'llaniladi.",
         "ru": "На нашей специальной платформе для бронирования халяль-отелей sunat.uz вы можете ознакомиться с информацией об отелях, выбрать даты и узнать цены самостоятельно, забронировать любой отель и оплатить банковской картой. Комиссии применяются к агентствам, зарегистрированным в нашей системе онлайн-бронирования.",
         "en": "On our special sunat.uz platform for booking halal hotels, you can get acquainted with hotel information, choose dates and find out prices yourself, book any hotel and pay by credit card. Commissions apply to agencies registered in our online booking system.",
 
     },
-"SAYT": {
+    "SAYT": {
         "uz": "Shuningdek, bizningveb-saytimizdasiz:",
         "ru": "Также на нашем сайте вы можете:",
         "en": "Also on our website you can:",
 
     },
 
-"NARX": {
+    "NARX": {
         "uz": "Eng yaxshi narxlarda komissiyasiz va qo'shimcha to'lovlar siz dunyoning istalgan nuqtasiga aviachiptalarni sotib oling. Biz yuzlab saytlardagi narxlarni solishtiramiz va sizga eng arzon parvoz va riantini tanlash imkonini beramiz.",
         "ru": "Покупайте авиабилеты в любую точку мира по лучшим ценам без комиссий и дополнительных сборов. Мы сравниваем цены на сотнях сайтов и предоставляем вам возможность выбрать самый дешевый вариант перелета.",
         "en": "Buy air tickets anywhere in the world at the best prices without commission or additional fees. We compare prices on hundreds of sites and let you choose the cheapest flight option.",
 
     },
 
-"OSAGO": {
+    "OSAGO": {
         "uz": "OSAGO elektron polisini ofisga bormasdan, qo'shimcha komissiyalar siz va atigi 7 daqiqada eng yirik va ishonchli sug'urta kompaniyalaridan onlayn tarzda chiqaring.",
         "ru": "Оформите электронный полис ОСАГО онлайн без выезда в офис, без дополнительных комиссий и всего за 7 минут от крупнейших и надежных страховых компаний.",
         "en": "Issue an OSAGO electronic policy online without going to the office, without additional commissions and in just 7 minutes from the largest and most reliable insurance companies.",
 
     },
 
-"TANLOV": {
+    "TANLOV": {
         "uz": "Umid qilamizki, biz sizga to'g'ri tanlov qilishga yordam beramiz.:",
         "ru": "Надеемся, что мы поможем вам сделать правильный выбор.С уважением, Сунна Тур.",
         "en": "We hope that we will help you make the right choice.",
 
     },
 
-"OXIRI": {
+    "OXIRI": {
         "uz": "Hurmat bilan, Sunna Tour.",
         "ru": "С уважением, Сунна Тур.",
         "en": "Sincerely, SunnaTour.",
 
     },
-
 
 }
