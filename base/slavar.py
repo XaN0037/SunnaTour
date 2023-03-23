@@ -15,7 +15,7 @@ TXT = {
         "uz":"Buyurtlmalar",
         "ru":"Заказы",
         "en":"Orders"
-    }
+    },
     "ZT": {
         "uz": "Ziyorat turizmi",
         "ru": "Паломнический туризм",
