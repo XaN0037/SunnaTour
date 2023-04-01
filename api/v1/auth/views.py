@@ -116,7 +116,9 @@ class AuthView(GenericAPIView):
                         'Error': "Bunday mobile allaqachon ro'yxatdan  o'tgan"
                     }, status=status.HTTP_400_BAD_REQUEST
                 )
+            print("Keldi")
             sms = sms_sender(params['mobile'], code, params['lang'])
+            print("Keldi")
             if sms.get('status') != "waiting":
                 return Response({
                     "error": "sms xizmatida qandaydir muommo",

@@ -1,16 +1,15 @@
-from rest_framework import permissions
-from rest_framework import status
-from django.db import transaction
+from decimal import Decimal
 import json
 import requests
-from api.v1.payment.payme.responses import beautiful_response
-
 import base64
 import binascii
+from sayt.models import TarifBron
 from django.conf import settings
+from rest_framework import permissions, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
+
 from api.v1.payment.payme.models import Order
 from api.v1.payment.payme.utils.logger import logged
 from api.v1.payment.payme.errors.exceptions import MethodNotFound
@@ -22,7 +21,6 @@ from api.v1.payment.payme.methods.cancel_transaction import CancelTransaction
 from api.v1.payment.payme.methods.create_transaction import CreateTransaction
 from api.v1.payment.payme.methods.perform_transaction import PerformTransaction
 from api.v1.payment.payme.methods.check_perform_transaction import CheckPerformTransaction
-from sayt.models import TarifBron
 
 
 class Payme(APIView):
@@ -49,7 +47,7 @@ class Payme(APIView):
             amount = bron.tarif.price
             if not bron.tarif.price_type == 'UZS':
                 amount = float(bron.tarif.price) * currency
-            order = Order.objects.create(amount=int(amount))
+            order = Order.objects.create(amount=int(amount), bron_id=bron_id)
             pay_link = GeneratePayLink(
                 order_id=order.id,
                 amount=Decimal(amount)
@@ -76,10 +74,8 @@ class MerchantAPIView(APIView):
 
     def post(self, request, *args, **kwargs):
         password = request.META.get('HTTP_AUTHORIZATION')
-        print(password)
         if self.authorize(password):
             incoming_data = request.data
-            print(incoming_data, "11111111111111111111111")
             incoming_method = incoming_data.get("method")
             logged_message = "Incoming {data}"
 
@@ -90,29 +86,27 @@ class MerchantAPIView(APIView):
                 ),
                 logged_type="info"
             )
-            print(logged, "22222222222222222222222222222222")
             try:
                 paycom_method = self.get_paycom_method_by_name(
                     incoming_method=incoming_method
                 )
-                print(paycom_method, "333333333333333333333333333333333333")
             except ValidationError:
                 raise MethodNotFound()
             except PerformTransactionDoesNotExist:
                 raise PerformTransactionDoesNotExist()
 
             paycom_method = paycom_method(incoming_data.get("params"))
-            headers = {
-                "Content-Type": "application/json; charset=UTF-8",
-                "Content-Length": 114,
-                "Test-Operation": "Paycom",
-                "Referer": "http://test.paycom.uz",
-                "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0",
-                "Authorization": "Basic UGF5Y29tOng/JXJSYmNla1VHenJBVkB6QkhZTlVDQGo0cHFaa0pDRDZKJQ=="
-            }
+            # headers = {
+            #     "Content-Type": "application/json; charset=UTF-8",
+            #     "Content-Length": 114,
+            #     "Test-Operation": "Paycom",
+            #     "Referer": "http://test.paycom.uz",
+            #     "User-Agent": "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0",
+            #     "Authorization": "Basic UGF5Y29tOng/JXJSYmNla1VHenJBVkB6QkhZTlVDQGo0cHFaa0pDRDZKJQ=="
+            # }
         return Response(
             data=paycom_method,
-            headers=headers
+            # headers=headers
         )
 
     @staticmethod

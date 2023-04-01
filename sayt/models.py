@@ -75,8 +75,8 @@ class TarifBron(models.Model):
     create_at = models.DateTimeField(auto_now_add=True)
 
 
-class PaymeOrder(models.Model):
-    bron = models.ForeignKey(TarifBron, on_delete=models.PROTECT)
-    order = models.ForeignKey(Order, on_delete=models.PROTECT)
-    transaction = models.ForeignKey(MerchatTransactionsModel, on_delete=models.PROTECT, blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+# class PaymeOrder(models.Model):
+#     bron = models.ForeignKey(TarifBron, on_delete=models.PROTECT)
+#     order = models.ForeignKey(Order, on_delete=models.PROTECT)
+#     transaction = models.ForeignKey(MerchatTransactionsModel, on_delete=models.PROTECT, blank=True, null=True)
+#     created_at = models.DateTimeField(auto_now_add=True)

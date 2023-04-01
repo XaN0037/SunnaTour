@@ -21,6 +21,7 @@ class MerchatTransactionsModel(models.Model):
 
 class Order(models.Model):
     amount = models.IntegerField(null=True, blank=True)
+    bron = models.ForeignKey('sayt.TarifBron', on_delete=models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -28,3 +29,6 @@ class Order(models.Model):
         return "ORDER ID: {order_id}".format(
             order_id=self.id
         )
+
+
+
