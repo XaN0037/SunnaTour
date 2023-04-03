@@ -14,20 +14,20 @@ class CheckPerformTransaction:
         response = {
             "result": {
                     "allow": True,
-                },
-                'detail': {
-                    'receipt_type': 0,
-                    'items': [
-                        {
-                            'title': order.bron.tarif.paket,
-                            'price': data.get('amount'),
-                            'cout': 1,
-                            'code': 10703999001000000, # Mhik,
-                            'package_code': 1495086, # Order id
-                            'vat_percent': 0
-                        }
-                    ]
                 }
+                # 'detail': {
+                #     'receipt_type': 0,
+                #     'items': [
+                #         {
+                #             'title': order.bron.tarif.paket,
+                #             'price': data.get('amount'),
+                #             'cout': 1,
+                #             'code': 10703999001000000, # Mhik,
+                #             'package_code': 1495086, # Order id
+                #             'vat_percent': 0
+                #         }
+                #     ]
+                # }
             }
 
         return response
