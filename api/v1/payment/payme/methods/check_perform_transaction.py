@@ -10,7 +10,7 @@ class CheckPerformTransaction:
             data=data
         )
         serializer.is_valid(raise_exception=True)
-        order = Order.objects.select_related('bron').filter(id=serializer.data.get('order_id')).first()
+        # order = Order.objects.select_related('bron').filter(id=serializer.data.get('order_id')).first()
         response = {
             "result": {
                     "allow": True,

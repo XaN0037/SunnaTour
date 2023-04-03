@@ -3,7 +3,7 @@ import time
 import datetime
 
 from api.v1.payment.payme.utils.get_params import get_params
-from api.v1.payment.payme.models import MerchatTransactionsModel
+from api.v1.payment.payme.models import MerchatTransactionsModel, Order
 from api.v1.payment.payme.errors.exceptions import TooManyRequests
 from api.v1.payment.payme.serializers import MerchatTransactionsModelSerializer
 
@@ -39,6 +39,10 @@ class CreateTransaction:
                 )
 
         if transaction:
+            order = Order.objects.select_related('bron').filter(id=serializer.validated_data.get('order_id')).first()
+            order.status = 1,
+            order.save()
+
             response: dict = {
                 "result": {
                     "create_time": int(transaction.created_at_ms),

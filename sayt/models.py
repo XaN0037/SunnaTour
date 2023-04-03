@@ -67,7 +67,7 @@ class News(models.Model):
 # qo'shilgan joyi
 class TarifBron(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True, db_constraint=False)
-    tarif = models.ForeignKey(Tarif, on_delete=models.DO_NOTHING, null=True, db_constraint=False)
+    d = models.ForeignKey(Tarif, on_delete=models.DO_NOTHING, null=True, db_constraint=False)
     status = models.IntegerField(choices=[
         (0, "Bron qilingan"),
         (1, "To'lov qilingan"),

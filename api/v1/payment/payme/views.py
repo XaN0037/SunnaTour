@@ -31,10 +31,8 @@ class Payme(APIView):
             user = self.request.user
             params = self.request.query_params
             bron_id = params.get('bron_id')
-            try:
-                bron_id = int(bron_id)
-                bron = TarifBron.objects.filter(id=bron_id, user=user.id).first()
-            except Exception as e:
+            bron = TarifBron.objects.filter(id=bron_id, user=user.id, status=0).first()
+            if not bron:
                 return Response(
                     {
                         'status': False,
