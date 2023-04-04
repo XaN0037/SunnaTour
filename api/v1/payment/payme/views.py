@@ -53,9 +53,10 @@ class Payme(APIView):
                 amount = float(amount) * currency
             if not order:
                 order = Order.objects.create(amount=int(amount), bron_id=bron_id)
+            amount /= 100
             pay_link = GeneratePayLink(
                 order_id=order.id,
-                amount=Decimal(amount/100)
+                amount=Decimal(amount)
             ).generate_link()
         except Exception as e:
             return Response(
