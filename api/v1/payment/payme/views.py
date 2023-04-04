@@ -44,7 +44,7 @@ class Payme(APIView):
             currency = float(currency)
             amount = bron.tarif.price
             if not bron.tarif.price_type == 'UZS':
-                amount = float(bron.tarif.price) * currency
+                amount = float(amount) * currency
             order = Order.objects.filter(
                 amount=int(amount), bron_id=bron_id, bron__user_id=user.id, bron__status=0,
             ).first()
@@ -52,7 +52,7 @@ class Payme(APIView):
                 order = Order.objects.create(amount=int(amount), bron_id=bron_id)
             pay_link = GeneratePayLink(
                 order_id=order.id,
-                amount=Decimal(amount)
+                amount=Decimal(amount)*100
             ).generate_link()
         except Exception as e:
             return Response(
