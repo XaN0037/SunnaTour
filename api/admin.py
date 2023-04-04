@@ -6,6 +6,4 @@ from api.models import ServerTokens, User
 
 
 admin.register(ServerTokens)
-admin.register(User)
-
-
+admin.site.register(User)
