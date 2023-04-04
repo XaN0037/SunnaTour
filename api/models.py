@@ -45,7 +45,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.mobile
 
     def save(self, *args, **kwargs):
-        if not self.mobile.startwith('+'):
+        if not self.mobile.startswith('+'):
             self.mobile = '+'+ self.mobile
         super().save(self, *args, **kwargs)
 

@@ -56,7 +56,7 @@ class AuthView(GenericAPIView):
                 })
 
             mobile = params.get("mobile")
-            if not mobile.startwith('+'):
+            if not mobile.startswith('+'):
                 mobile = '+'+mobile
             user = User.objects.filter(mobile=mobile).first()
 
@@ -84,7 +84,7 @@ class AuthView(GenericAPIView):
                 })
 
             mobile = params.get("mobile")
-            if not mobile.startwith('+'):
+            if not mobile.startswith('+'):
                 mobile = '+'+mobile
             user = User.objects.filter(mobile=mobile).first()
 
