@@ -44,18 +44,12 @@ class Payme(APIView):
             currency = float(currency)
             amount = bron.tarif.price
 
-            order = Order.objects.filter(
-                amount=int(amount), bron_id=bron_id, bron__user_id=user.id, bron__status=0, bron__tarif__price=amount,
-                bron__tarif__price_type=bron.tarif.price_type
-            ).first()
-
             if not bron.tarif.price_type == 'UZS':
-                amount = float(amount) * currency
-            print(amount)
-            if not order:
-                order = Order.objects.create(amount=int(amount), bron_id=bron_id)
-            amount /= 100
-            print(amount)
+                amount = round((float(amount) * currency) * 100, 2)
+            else:
+                amount = round(amount * 100, 2)
+            order = Order.objects.create(amount=int(amount), bron_id=bron_id)
+
             pay_link = GeneratePayLink(
                 order_id=order.id,
                 amount=Decimal(amount)
