@@ -1,10 +1,11 @@
 from django.contrib import admin
 
-from api.models import ServerTokens
+from api.models import ServerTokens, User
 
 # Register your models here.
 
 
 admin.register(ServerTokens)
+admin.register(User)
 
 
