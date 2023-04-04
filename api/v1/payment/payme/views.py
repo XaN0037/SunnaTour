@@ -43,11 +43,14 @@ class Payme(APIView):
             currency = json.loads(cbu_uz_api.content)[0]['Rate']
             currency = float(currency)
             amount = bron.tarif.price
+
+            order = Order.objects.filter(
+                amount=int(amount), bron_id=bron_id, bron__user_id=user.id, bron__status=0, bron__tarif__price=amount,
+                bron__tarif__price_type=bron.tarif.price_type
+            ).first()
+            
             if not bron.tarif.price_type == 'UZS':
                 amount = float(amount) * currency
-            order = Order.objects.filter(
-                amount=int(amount), bron_id=bron_id, bron__user_id=user.id, bron__status=0,
-            ).first()
             if not order:
                 order = Order.objects.create(amount=int(amount), bron_id=bron_id)
             pay_link = GeneratePayLink(
