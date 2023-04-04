@@ -54,7 +54,7 @@ class Payme(APIView):
             print(amount)
             if not order:
                 order = Order.objects.create(amount=int(amount), bron_id=bron_id)
-            # amount *= 100
+            amount *= 100
             print(amount)
             pay_link = GeneratePayLink(
                 order_id=order.id,
