@@ -31,7 +31,6 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (os.getenv('DEBUG') == 'True')
-print(DEBUG)
 ALLOWED_HOSTS = ['*'] if DEBUG else os.getenv('ALLOWED_HOSTS').split(',')
 
 # Application definition
@@ -150,7 +149,6 @@ REST_FRAMEWORK = {
 
 LANGUAGE_CODE = 'en-us'
 
-# print(pytz.all_timezones)
 TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True

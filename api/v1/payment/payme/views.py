@@ -46,7 +46,6 @@ class Payme(APIView):
 
             if not bron.tarif.price_type == 'UZS':
                 amount = round(float(amount) * currency * float(100), 2)
-                print(type(amount))
             else:
                 amount = round(float(amount * 100), 2)
             order = Order.objects.create(amount=int(amount), bron_id=bron_id)

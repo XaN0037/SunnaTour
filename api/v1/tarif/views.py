@@ -55,9 +55,6 @@ class TarifViews(GenericAPIView):
         return Response(format_tarif(root))
 
     def put(self, requests, pk, *args, **kwargs):
-        print("asdfgh")
-
-        print(requests)
         data = requests.data
         new = Tarif.objects.get(pk=pk)
         serializer = self.get_serializer(data=data, instance=new, partial=True)
