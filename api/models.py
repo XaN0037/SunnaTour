@@ -44,10 +44,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.mobile
 
-    def save(self, *args, **kwargs):
-        if not self.mobile.startswith('+'):
-            self.mobile = '+'+ self.mobile
-        super().save(self, *args, **kwargs)
 
 
 class ServerTokens(models.Model):

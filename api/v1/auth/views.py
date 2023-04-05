@@ -57,8 +57,8 @@ class AuthView(GenericAPIView):
                 })
 
             mobile = params.get("mobile")
-            if not mobile.startswith('+'):
-                mobile = '+'+mobile
+            if mobile.startswith('+'):
+                mobile = mobile.split('+')[-1]
             user = User.objects.filter(mobile=mobile).first()
 
             if user:
@@ -85,8 +85,8 @@ class AuthView(GenericAPIView):
                 })
 
             mobile = params.get("mobile")
-            if not mobile.startswith('+'):
-                mobile = '+'+mobile
+            if mobile.startswith('+'):
+                mobile = mobile.split('+')[-1]
             user = User.objects.filter(mobile=mobile).first()
 
             if not user:
@@ -121,7 +121,10 @@ class AuthView(GenericAPIView):
                         'Error': "Bunday mobile allaqachon ro'yxatdan  o'tgan"
                     }, status=status.HTTP_400_BAD_REQUEST
                 )
-            sms = sms_sender(params['mobile'], code, params['lang'])
+            mobile = params['mobile']
+            if mobile.startswith("+"):
+                mobile = mobile.split('+')[-1]
+            sms = sms_sender(mobile, code, params['lang'])
             if sms.get('status') != "waiting":
                 return Response({
                     "error": "sms xizmatida qandaydir muommo",
@@ -129,7 +132,7 @@ class AuthView(GenericAPIView):
                 })
 
             root = OTP()
-            root.mobile = params['mobile']
+            root.mobile = mobile
             root.key = uuid.uuid4().__str__() + "$" + otp + "$" + uuid.uuid1().__str__()
             root.save()
 
