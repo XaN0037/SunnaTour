@@ -31,6 +31,7 @@ class AuthView(GenericAPIView):
                 "Error": "params kiritilmagan"
             })
 
+        # match method:
         if method == "regis":
             nott = "token" if "token" not in params else None
             if nott:
@@ -190,10 +191,6 @@ class AuthView(GenericAPIView):
                 return Response({
                     "is_registered": False
                 })
-
-
-
-
 
         else:
             return Response({

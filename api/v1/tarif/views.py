@@ -93,7 +93,11 @@ class ActionViews(GenericAPIView):
                 return Response({
                     "Error": "Bunaqa tarif topilmadi"
                 })
-
+            user_brons = TarifBron.objects.filter(tarif_id=t.id, user_id=requests.user.id).first()
+            if user_brons:
+                return Response({
+                    "Error": "Allaqachon bron qilingan."
+                })
             root = TarifBron()
             root.user = requests.user
             root.tarif = t
